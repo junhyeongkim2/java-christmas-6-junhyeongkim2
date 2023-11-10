@@ -46,4 +46,19 @@ public class CalculatorTest {
     }
 
 
+    @DisplayName("총 혜택 금액 계산 성공 테스트")
+    @Test
+    void calculateTotalBenefitAmount_EqualResult_Success() {
+        //given
+        Calculator calculator = new Calculator();
+        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,바비큐립-1,샴페인-1");
+
+        //when
+        calculator.calculateTotalBenefitAmount(menus);
+
+        //then
+
+    }
+
+
 }

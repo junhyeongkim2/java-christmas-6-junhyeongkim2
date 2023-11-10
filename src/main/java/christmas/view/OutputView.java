@@ -20,4 +20,17 @@ public class OutputView {
         System.out.println();
     }
 
+
+    public static void printGiveawayMenu(Boolean giveawayMenu) {
+        System.out.println("<증정 메뉴>");
+        if (giveawayMenu == true) {
+            System.out.println("샴페인");
+        }
+        if (giveawayMenu == false) {
+            System.out.println("없음");
+        }
+
+    }
+
+
 }

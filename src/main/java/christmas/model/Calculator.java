@@ -1,13 +1,19 @@
 package christmas.model;
 
-import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
-import java.util.List;
 
 public class Calculator {
+
+    private int totalOrderAmount;
+
     public Integer calculateTotalOrderAmount(Menus menus) {
-        return menus.totalOrderAmount();
+        totalOrderAmount = menus.totalOrderAmount();
+        return totalOrderAmount;
     }
 
 
+    public void calculateTotalBenefitAmount(Menus menus) {
+        EventChecker eventChecker = new EventChecker();
+        eventChecker.checkEvent(totalOrderAmount);
+    }
 }
