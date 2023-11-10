@@ -2,13 +2,18 @@ package christmas.model;
 
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
+import java.util.List;
 import java.util.Map;
 
 public class EventChecker {
+
+    private final List<Integer> specialDay = List.of(3, 10, 17, 24, 25, 31);
+
     public void checkEvent(Menus menus, int day) {
         checkGiveawayMenu(menus.totalOrderAmount());
         checkWeekdayDiscount(menus, day);
         checkWeekendDiscount(menus, day);
+        checkSpecialDiscount(day);
     }
 
 
@@ -35,4 +40,10 @@ public class EventChecker {
     }
 
 
+    public Boolean checkSpecialDiscount(int day) {
+        if (specialDay.contains(day)) {
+            return true;
+        }
+        return false;
+    }
 }

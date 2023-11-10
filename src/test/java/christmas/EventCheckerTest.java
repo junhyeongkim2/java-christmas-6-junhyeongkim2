@@ -96,4 +96,21 @@ public class EventCheckerTest {
     }
 
 
+    @DisplayName("특별 할인 조사 성공 테스트")
+    @Test
+    void checkSpecialDiscount_IsSpecialay_Success() {
+        EventChecker eventChecker = new EventChecker();
+        Boolean specialFlag = eventChecker.checkSpecialDiscount(31);
+        assertThat(specialFlag).isTrue();
+    }
+
+    @DisplayName("특별 할인 조사 실패 테스트")
+    @Test
+    void checkSpecialDiscount_IsNotSpecialay_ReturnFalse() {
+        EventChecker eventChecker = new EventChecker();
+        Boolean specialFlag = eventChecker.checkSpecialDiscount(13);
+        assertThat(specialFlag).isFalse();
+    }
+
+
 }
