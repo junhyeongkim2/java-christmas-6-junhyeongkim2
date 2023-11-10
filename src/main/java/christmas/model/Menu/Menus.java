@@ -23,21 +23,21 @@ public class Menus {
         return new Menus(menus);
     }
 
+    public Map<Menu, Integer> getMenus() {
+        return this.menus;
+    }
+
 
     public int totalOrderAmount() {
         return Arrays.stream(Menu.values()).mapToInt(menu -> menus.get(menu)).sum();
     }
 
-    public long totalDessertAmount() {
-        return Arrays.stream(Menu.values()).filter(menu -> menu.getCategory().equals("디저트"))
+    public long totalEventMatchAmount(String category) {
+        return Arrays.stream(Menu.values()).filter(menu -> menu.getCategory().equals(category))
                 .mapToInt(key -> menus.get(key) / Menu.valueOf(
                         String.valueOf(key)).getPrice()).sum();
     }
 
-
-    public Map<Menu, Integer> getMenus() {
-        return this.menus;
-    }
 
 
 }

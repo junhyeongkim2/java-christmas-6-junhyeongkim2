@@ -7,7 +7,8 @@ import java.util.Map;
 public class EventChecker {
     public void checkEvent(Menus menus, int day) {
         checkGiveawayMenu(menus.totalOrderAmount());
-        checkWeekDayDiscount(menus, day);
+        checkWeekdayDiscount(menus, day);
+        checkWeekendDiscount(menus, day);
     }
 
 
@@ -19,10 +20,19 @@ public class EventChecker {
     }
 
 
-    public Long checkWeekDayDiscount(Menus menus, int day) {
+    public Long checkWeekdayDiscount(Menus menus, int day) {
         if (day % 7 != 1 && day % 7 != 2 && day % 7 != 3 && day != 25) {
-            return menus.totalDessertAmount();
+            return menus.totalEventMatchAmount("디저트");
         }
-        return null;
+        return 0L;
     }
+
+    public Long checkWeekendDiscount(Menus menus, int day) {
+        if (day % 7 == 1 || day % 7 == 2) {
+            return menus.totalEventMatchAmount("메인");
+        }
+        return 0L;
+    }
+
+
 }

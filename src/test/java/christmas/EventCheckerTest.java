@@ -42,11 +42,56 @@ public class EventCheckerTest {
         Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
 
         //when
-        long count = eventChecker.checkWeekDayDiscount(menus, 6);
+        long count = eventChecker.checkWeekdayDiscount(menus, 6);
 
         //then
         assertThat(count).isNotNull();
         assertThat(count).isEqualTo(7);
+
+    }
+
+    @DisplayName("평일 할인 조사 실패 테스트")
+    @Test
+    void checkWeekdayDiscount_IsNotWeekday_ReturnZero() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
+
+        //when
+        long count = eventChecker.checkWeekdayDiscount(menus, 30);
+
+        //then
+        assertThat(count).isEqualTo(0);
+    }
+
+    @DisplayName("주말 할인 조사 성공 테스트")
+    @Test
+    void checkWeekendDiscount_IsWeekend_Success() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1,아이스크림-1,티본스테이크-5,제로콜라-1");
+
+        //when
+        long count = eventChecker.checkWeekendDiscount(menus, 8);
+
+        //then
+        assertThat(count).isNotNull();
+        assertThat(count).isEqualTo(5);
+
+    }
+
+    @DisplayName("주말 할인 조사 실패 테스트")
+    @Test
+    void checkWeekendDiscount_IsNotWeekend_ReturnZero() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1,아이스크림-1,티본스테이크-5,제로콜라-1");
+
+        //when
+        long count = eventChecker.checkWeekendDiscount(menus, 28);
+
+        //then
+        assertThat(count).isEqualTo(0);
 
     }
 
