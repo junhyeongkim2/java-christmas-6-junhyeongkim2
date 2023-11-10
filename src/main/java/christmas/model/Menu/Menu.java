@@ -1,6 +1,12 @@
 package christmas.model.Menu;
 
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 
 public enum Menu {
 
@@ -16,9 +22,9 @@ public enum Menu {
     레드와인("레드와인", "음료", 60000),
     샴페인("샴페인", "음료", 25000);
 
-    private String name;
-    private String category;
-    private int price;
+    private final String name;
+    private final String category;
+    private final int price;
 
     Menu(String name, String category, int price) {
         this.name = name;
@@ -26,8 +32,42 @@ public enum Menu {
         this.price = price;
     }
 
+    public static void validateIsContainMenu(String menu) {
+        Boolean find = Arrays.stream(Menu.values()).map(Menu::getName).collect(Collectors.toList()).contains(menu);
+        if (find == false) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
+
+    public static Menus splitMenuWithNameAndCount(String menuInput) {
+        return splitMenuAndCount(splitMenuWithComma(menuInput));
+    }
+
+    public static String[] splitMenuWithComma(String menuInput) {
+        return menuInput.split(",");
+    }
+
+    public static String[] splitMenuWithHypen(String menuInput) {
+        return menuInput.split("-");
+    }
+
+    public static Menus splitMenuAndCount(String[] splitMenuWithComma) {
+        Map<Menu, Integer> orderedMenu = new EnumMap(Menu.class);
+        for (String splitMenu : splitMenuWithComma) {
+            String[] menuAndCount = splitMenuWithHypen(splitMenu);
+            Menu.validateIsContainMenu(menuAndCount[0]);
+            orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
+                    Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
+        }
+        return Menus.of(orderedMenu);
+    }
+
     public int getPrice() {
         return this.price;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
 
