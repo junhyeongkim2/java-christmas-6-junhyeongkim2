@@ -6,14 +6,16 @@ public class Calculator {
 
     private int totalOrderAmount;
 
+
     public Integer calculateTotalOrderAmount(Menus menus) {
         totalOrderAmount = menus.totalOrderAmount();
         return totalOrderAmount;
     }
 
 
-    public EventResult calculateTotalBenefitAmount(Menus menus, int day) {
+    public long calculateTotalBenefitAmount(Menus menus, int day) {
         EventChecker eventChecker = new EventChecker();
-        return eventChecker.checkEvent(menus, day);
+        EventResult eventresult = eventChecker.checkEvent(menus, day);
+        return eventresult.calculateTotalBenefit();
     }
 }

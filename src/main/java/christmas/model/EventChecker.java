@@ -11,7 +11,7 @@ public class EventChecker {
     private final List<Integer> specialDay = List.of(3, 10, 17, 24, 25, 31);
 
     public EventResult checkEvent(Menus menus, int day) {
-        return new EventResult(
+        return EventResult.createOf(
                 List.of(checkGiveawayMenu(menus.totalOrderAmount()), checkWeekdayDiscount(menus, day),
                         checkWeekendDiscount(menus, day), checkSpecialDiscount(day), checkDdayDiscount(day)));
     }

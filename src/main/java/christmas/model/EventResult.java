@@ -11,7 +11,7 @@ public class EventResult {
         this.eventResult = eventResult;
     }
 
-    public List<Long> createEventResult() {
+    public static EventResult createOf(List<Long> eventResult) {
         List<Long> result = new ArrayList<>();
 
         result.add(eventResult.get(0) * 25000);
@@ -20,7 +20,11 @@ public class EventResult {
         result.add(eventResult.get(3) * 1000);
         result.add(eventResult.get(4) * 100 + 900);
 
-        return result;
+        return new EventResult(result);
+    }
+
+    public long calculateTotalBenefit() {
+        return eventResult.stream().mapToLong(Long::longValue).sum();
     }
 
 

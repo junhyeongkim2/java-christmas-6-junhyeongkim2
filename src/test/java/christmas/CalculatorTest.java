@@ -42,20 +42,34 @@ public class CalculatorTest {
     }
 
 
-    @DisplayName("총 혜택 금액 계산 성공 테스트")
+    @DisplayName("총 혜택 금액 계산 평일 성공 테스트")
     @Test
-    void calculateTotalBenefitAmount_EqualResult_Success() {
+    void calculateTotalBenefitAmount_WeekdayEqualResult_Success() {
         //given
         Calculator calculator = new Calculator();
         Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
 
         //when
-        EventResult eventResult = calculator.calculateTotalBenefitAmount(menus, 3);
-        List<Long> result = eventResult.createEventResult();
+        long result = calculator.calculateTotalBenefitAmount(menus, 3);
 
         //then
-        assertThat(result.size()).isEqualTo(5);
-        assertThat(result.stream().mapToLong(Long::longValue).sum()).isEqualTo(31246);
+        assertThat(result).isEqualTo(31246);
+
+    }
+
+
+    @DisplayName("총 혜택 금액 계산 주말 성공 테스트")
+    @Test
+    void calculateTotalBenefitAmount_WeekendEqualResult_Success() {
+        //given
+        Calculator calculator = new Calculator();
+        Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+
+        //when
+        long result = calculator.calculateTotalBenefitAmount(menus, 16);
+
+        //then
+        assertThat(result).isEqualTo(31546);
 
 
     }
