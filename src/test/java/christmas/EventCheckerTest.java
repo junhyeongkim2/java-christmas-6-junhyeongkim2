@@ -17,9 +17,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        Boolean checkFlag = eventChecker.checkGiveawayMenu(125000);
+        long checkFlag = eventChecker.checkGiveawayMenu(125000);
         //then
-        assertThat(checkFlag).isTrue();
+        assertThat(checkFlag).isEqualTo(1);
     }
 
     @DisplayName("증정 이벤트 당첨 실패 테스트")
@@ -28,9 +28,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        Boolean checkFlag = eventChecker.checkGiveawayMenu(5000);
+        long checkFlag = eventChecker.checkGiveawayMenu(5000);
         //then
-        assertThat(checkFlag).isFalse();
+        assertThat(checkFlag).isEqualTo(0);
     }
 
 
@@ -102,9 +102,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        Boolean specialFlag = eventChecker.checkSpecialDiscount(31);
+        long specialFlag = eventChecker.checkSpecialDiscount(31);
         //then
-        assertThat(specialFlag).isTrue();
+        assertThat(specialFlag).isEqualTo(1);
     }
 
     @DisplayName("특별 할인 조사 실패 테스트")
@@ -113,9 +113,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        Boolean specialFlag = eventChecker.checkSpecialDiscount(13);
+        long specialFlag = eventChecker.checkSpecialDiscount(13);
         //then
-        assertThat(specialFlag).isFalse();
+        assertThat(specialFlag).isEqualTo(0);
     }
 
     @DisplayName("디데이 할인 성공 테스트")

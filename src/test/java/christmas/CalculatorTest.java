@@ -1,15 +1,11 @@
 package christmas;
 
 import christmas.model.Calculator;
+import christmas.model.EventResult;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
-import christmas.model.Product;
 import christmas.view.OutputView;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -51,12 +47,16 @@ public class CalculatorTest {
     void calculateTotalBenefitAmount_EqualResult_Success() {
         //given
         Calculator calculator = new Calculator();
-        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,바비큐립-1,샴페인-1");
+        Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
 
         //when
-        calculator.calculateTotalBenefitAmount(menus, 6);
+        EventResult eventResult = calculator.calculateTotalBenefitAmount(menus, 3);
+        List<Long> result = eventResult.createEventResult();
 
         //then
+        assertThat(result.size()).isEqualTo(5);
+        assertThat(result.stream().mapToLong(Long::longValue).sum()).isEqualTo(31246);
+
 
     }
 
