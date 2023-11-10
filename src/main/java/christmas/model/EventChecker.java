@@ -14,6 +14,7 @@ public class EventChecker {
         checkWeekdayDiscount(menus, day);
         checkWeekendDiscount(menus, day);
         checkSpecialDiscount(day);
+        checkDdayDiscount(day);
     }
 
 
@@ -25,18 +26,18 @@ public class EventChecker {
     }
 
 
-    public Long checkWeekdayDiscount(Menus menus, int day) {
+    public long checkWeekdayDiscount(Menus menus, int day) {
         if (day % 7 != 1 && day % 7 != 2 && day % 7 != 3 && day != 25) {
             return menus.totalEventMatchAmount("디저트");
         }
-        return 0L;
+        return 0;
     }
 
-    public Long checkWeekendDiscount(Menus menus, int day) {
+    public long checkWeekendDiscount(Menus menus, int day) {
         if (day % 7 == 1 || day % 7 == 2) {
             return menus.totalEventMatchAmount("메인");
         }
-        return 0L;
+        return 0;
     }
 
 
@@ -45,5 +46,13 @@ public class EventChecker {
             return true;
         }
         return false;
+    }
+
+    public long checkDdayDiscount(int day) {
+        if (day > 25) {
+            return 0L;
+        }
+        return day;
+
     }
 }

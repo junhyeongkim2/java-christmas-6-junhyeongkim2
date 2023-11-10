@@ -99,18 +99,48 @@ public class EventCheckerTest {
     @DisplayName("특별 할인 조사 성공 테스트")
     @Test
     void checkSpecialDiscount_IsSpecialay_Success() {
+        //given
         EventChecker eventChecker = new EventChecker();
+        //when
         Boolean specialFlag = eventChecker.checkSpecialDiscount(31);
+        //then
         assertThat(specialFlag).isTrue();
     }
 
     @DisplayName("특별 할인 조사 실패 테스트")
     @Test
     void checkSpecialDiscount_IsNotSpecialay_ReturnFalse() {
+        //given
         EventChecker eventChecker = new EventChecker();
+        //when
         Boolean specialFlag = eventChecker.checkSpecialDiscount(13);
+        //then
         assertThat(specialFlag).isFalse();
     }
+
+    @DisplayName("디데이 할인 성공 테스트")
+    @Test
+    void checkDdayDiscount_EqualResult_Success() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        //when
+        Long count = eventChecker.checkDdayDiscount(25);
+        //then
+        assertThat(count).isEqualTo(25);
+    }
+
+
+    @DisplayName("디데이 할인 실패 테스트")
+    @Test
+    void checkDdayDiscount_DiferentResult_Success() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        //when
+        Long count = eventChecker.checkDdayDiscount(28);
+        //then
+        assertThat(count).isEqualTo(0);
+    }
+
 
 
 }
