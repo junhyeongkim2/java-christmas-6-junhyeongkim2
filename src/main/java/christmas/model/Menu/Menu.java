@@ -70,5 +70,9 @@ public enum Menu {
         return this.name;
     }
 
+    public String getCategory() {
+        return this.category;
+    }
+
 
 }

@@ -12,8 +12,8 @@ public class Calculator {
     }
 
 
-    public void calculateTotalBenefitAmount(Menus menus) {
+    public void calculateTotalBenefitAmount(Menus menus, int day) {
         EventChecker eventChecker = new EventChecker();
-        eventChecker.checkEvent(totalOrderAmount);
+        eventChecker.checkEvent(menus, day);
     }
 }

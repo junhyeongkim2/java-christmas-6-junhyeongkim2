@@ -1,6 +1,8 @@
 package christmas;
 
 import christmas.model.EventChecker;
+import christmas.model.Menu.Menu;
+import christmas.model.Menu.Menus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +32,23 @@ public class EventCheckerTest {
         //then
         assertThat(checkFlag).isFalse();
     }
+
+
+    @DisplayName("평일 할인 조사 성공 테스트")
+    @Test
+    void checkWeekdayDiscount_IsWeekday_Success() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
+
+        //when
+        long count = eventChecker.checkWeekDayDiscount(menus, 6);
+
+        //then
+        assertThat(count).isNotNull();
+        assertThat(count).isEqualTo(7);
+
+    }
+
 
 }

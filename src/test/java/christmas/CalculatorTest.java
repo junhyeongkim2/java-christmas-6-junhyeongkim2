@@ -54,7 +54,7 @@ public class CalculatorTest {
         Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,바비큐립-1,샴페인-1");
 
         //when
-        calculator.calculateTotalBenefitAmount(menus);
+        calculator.calculateTotalBenefitAmount(menus, 6);
 
         //then
 
