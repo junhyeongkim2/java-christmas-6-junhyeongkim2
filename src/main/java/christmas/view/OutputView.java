@@ -54,6 +54,11 @@ public class OutputView {
         System.out.println(expectedPaymentAmount);
     }
 
+    public static void printTotalBenefitAmount(long totalBenefitAmount) {
+        System.out.println("<총혜택 금액>");
+        System.out.println("-" + totalBenefitAmount);
+    }
+
 
 }
 
