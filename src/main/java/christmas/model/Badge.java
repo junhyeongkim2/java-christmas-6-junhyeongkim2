@@ -2,7 +2,7 @@ package christmas.model;
 
 public enum Badge {
 
-    미달("미달", 0),
+    없음("없음", 0),
     별("별", 5000),
     트리("트리", 10000),
     산타("산타", 20000);
@@ -25,7 +25,7 @@ public enum Badge {
         if (totalBenefitAmount >= Badge.산타.price) {
             return Badge.산타;
         }
-        return Badge.미달;
+        return Badge.없음;
     }
 
 }
