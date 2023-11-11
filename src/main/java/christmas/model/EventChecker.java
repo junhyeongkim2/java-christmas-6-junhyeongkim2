@@ -24,6 +24,10 @@ public class EventChecker {
         return eventResult.calculateTotalBenefit();
     }
 
+    public long calculateExpectedPaymentAmount(int totalOrderAmount) {
+        return eventResult.calculateExpectedPaymentAmount(totalOrderAmount);
+    }
+
 
     public long checkGiveawayMenu(int totalOrderAmount) {
         if (totalOrderAmount >= 120000) {

@@ -23,7 +23,7 @@ public class Calculator {
     }
 
     public long calculateExpectedPaymentAmount(int totalOrderAmount) {
-        return eventResult.calculateExpectedPaymentAmount(totalOrderAmount);
+        return eventChecker.calculateExpectedPaymentAmount(totalOrderAmount);
     }
 
 
