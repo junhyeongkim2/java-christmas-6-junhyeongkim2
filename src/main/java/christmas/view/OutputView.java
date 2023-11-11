@@ -11,7 +11,7 @@ public class OutputView {
 
 
     public static void printStartBenefitMessage(int day) {
-        System.out.println("12월" + " " + day + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+        System.out.println("12월" + " " + day + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n");
     }
 
     public static void printMenus(Map<Menu, Integer> menus) {
@@ -22,19 +22,19 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printTotalOrderAmount(int totalOrderAmount) {
+    public static void printTotalOrderAmount(long totalOrderAmount) {
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(totalOrderAmount + "원");
+        System.out.println(totalOrderAmount + "원\n");
     }
 
 
-    public static void printGiveawayMenu(Boolean giveawayMenu) {
+    public static void printGiveawayMenu(long giveawayMenu) {
         System.out.println("<증정 메뉴>");
-        if (giveawayMenu == true) {
-            System.out.println("샴페인");
+        if (giveawayMenu == 1) {
+            System.out.println("샴페인 1개\n");
         }
-        if (giveawayMenu == false) {
-            System.out.println("없음");
+        if (giveawayMenu == 0) {
+            System.out.println("없음\n");
         }
     }
 
@@ -44,6 +44,7 @@ public class OutputView {
         isWeekedayOrWeekend(eventResult.get(1), eventResult.get(2));
         System.out.println("특별 할인: -" + eventResult.get(3));
         System.out.println("증정 이벤트: -" + eventResult.get(0));
+        System.out.println();
     }
 
     public static void isWeekedayOrWeekend(long weekday, long weekend) {
@@ -57,12 +58,12 @@ public class OutputView {
 
     public static void printTotalBenefitAmount(long totalBenefitAmount) {
         System.out.println("<총혜택 금액>");
-        System.out.println("-" + totalBenefitAmount);
+        System.out.println("-" + totalBenefitAmount+"\n");
     }
 
     public static void printExpectedPaymentAmount(long expectedPaymentAmount) {
         System.out.println("<할인 후 예상 결제 금액>");
-        System.out.println(expectedPaymentAmount);
+        System.out.println(expectedPaymentAmount+"\n");
     }
 
     public static void printBadge(Badge badge) {

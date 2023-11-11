@@ -23,6 +23,7 @@ public class Menus {
         return new Menus(menus);
     }
 
+
     public Map<Menu, Integer> getMenus() {
         return this.menus;
     }
