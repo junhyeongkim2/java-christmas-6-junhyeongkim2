@@ -28,7 +28,7 @@ public class Menus {
     }
 
 
-    public int totalOrderAmount() {
+    public long totalOrderAmount() {
         return Arrays.stream(Menu.values()).mapToInt(menu -> menus.get(menu)).sum();
     }
 

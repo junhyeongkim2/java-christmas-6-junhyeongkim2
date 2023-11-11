@@ -35,7 +35,7 @@ public class EventResult {
     }
 
 
-    public long calculateExpectedPaymentAmount(int totalOrderAmount) {
+    public long calculateExpectedPaymentAmount(long totalOrderAmount) {
         return totalOrderAmount - eventResult.stream().skip(1).limit(4).mapToLong(Long::longValue).sum();
     }
 

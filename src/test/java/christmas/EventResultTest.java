@@ -41,7 +41,7 @@ public class EventResultTest {
 
         //when
         EventResult eventResult = eventChecker.checkEvent(menus, 3);
-        int totalAmount = calculator.calculateTotalOrderAmount(menus);
+        long totalAmount = calculator.calculateTotalOrderAmount(menus);
         long expectedPaymentAmount = eventResult.calculateExpectedPaymentAmount(totalAmount);
         System.out.println(expectedPaymentAmount);
         //then
@@ -60,7 +60,7 @@ public class EventResultTest {
 
         //when
         EventResult eventResult = eventChecker.checkEvent(menus, 3);
-        int totalAmount = calculator.calculateTotalOrderAmount(menus);
+        long totalAmount = calculator.calculateTotalOrderAmount(menus);
         long totalBenefitAmount = eventResult.calculateTotalBenefit();
         long expectedPaymentAmount = eventResult.calculateExpectedPaymentAmount(totalAmount);
         Badge badge = eventResult.generateBadge(totalBenefitAmount);

@@ -1,32 +1,41 @@
 package christmas.model;
 
 import christmas.model.Menu.Menus;
+import java.util.List;
 
 public class Calculator {
 
-    private int totalOrderAmount;
-
     private EventChecker eventChecker;
+    private long totalOrderAmount;
+
 
     public Calculator() {
         this.eventChecker = new EventChecker();
     }
 
 
-    public Integer calculateTotalOrderAmount(Menus menus) {
+    public long calculateTotalOrderAmount(Menus menus) {
         totalOrderAmount = menus.totalOrderAmount();
         return totalOrderAmount;
+    }
+
+    public long calculateGiveawayMenu() {
+        return eventChecker.checkGiveawayMenu(totalOrderAmount);
+    }
+
+    public EventResult calculateEventResult(Menus menus, int day) {
+        return eventChecker.checkEvent(menus, day);
     }
 
     public long calculateTotalBenefitAmount(Menus menus, int day) {
         return eventChecker.calculateTotalBenefitAmount(menus, day);
     }
 
-    public long calculateExpectedPaymentAmount(int totalOrderAmount) {
+    public long calculateExpectedPaymentAmount() {
         return eventChecker.calculateExpectedPaymentAmount(totalOrderAmount);
     }
 
-    public Badge calculateEventBadge(int totalBenefitAmount) {
+    public Badge calculateEventBadge(long totalBenefitAmount) {
         return eventChecker.checkEventBadge(totalBenefitAmount);
     }
 

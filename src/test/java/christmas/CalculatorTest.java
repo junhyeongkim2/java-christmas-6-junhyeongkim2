@@ -21,7 +21,7 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1,바비큐립-1,샴페인-1");
         //when
-        int totalOrderAmount = calculator.calculateTotalOrderAmount(menus);
+        long totalOrderAmount = calculator.calculateTotalOrderAmount(menus);
         //then
         assertThat(totalOrderAmount).isEqualTo(15000 + 54000 + 25000);
         OutputView.printMenus(menus.getMenus());
@@ -34,7 +34,7 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,바비큐립-1,샴페인-1");
         //when
-        int totalOrderAmount = calculator.calculateTotalOrderAmount(menus);
+        long totalOrderAmount = calculator.calculateTotalOrderAmount(menus);
         //then
         assertThat(totalOrderAmount).isNotEqualTo(15000 + 54000 + 30000);
         OutputView.printMenus(menus.getMenus());

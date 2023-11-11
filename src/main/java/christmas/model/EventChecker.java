@@ -24,8 +24,12 @@ public class EventChecker {
         return eventResult.calculateTotalBenefit();
     }
 
-    public long calculateExpectedPaymentAmount(int totalOrderAmount) {
+    public long calculateExpectedPaymentAmount(long totalOrderAmount) {
         return eventResult.calculateExpectedPaymentAmount(totalOrderAmount);
+    }
+
+    public List<Long> checkEventResult() {
+        return eventResult.getEventResult();
     }
 
     public Badge checkEventBadge(long totalBenefitAmount) {
@@ -33,7 +37,7 @@ public class EventChecker {
     }
 
 
-    public long checkGiveawayMenu(int totalOrderAmount) {
+    public long checkGiveawayMenu(long totalOrderAmount) {
         if (totalOrderAmount >= 120000) {
             return 1;
         }
