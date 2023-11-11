@@ -6,7 +6,11 @@ public class Calculator {
 
     private int totalOrderAmount;
 
-    private EventResult eventResult;
+    private EventChecker eventChecker;
+
+    public Calculator() {
+        this.eventChecker = new EventChecker();
+    }
 
 
     public Integer calculateTotalOrderAmount(Menus menus) {
@@ -15,9 +19,7 @@ public class Calculator {
     }
 
     public long calculateTotalBenefitAmount(Menus menus, int day) {
-        EventChecker eventChecker = new EventChecker();
-        eventResult = eventChecker.checkEvent(menus, day);
-        return eventResult.calculateTotalBenefit();
+        return eventChecker.calculateTotalBenefitAmount(menus, day);
     }
 
     public long calculateExpectedPaymentAmount(int totalOrderAmount) {

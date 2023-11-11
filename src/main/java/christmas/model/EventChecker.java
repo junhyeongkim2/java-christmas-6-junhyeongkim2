@@ -10,10 +10,18 @@ public class EventChecker {
 
     private final List<Integer> specialDay = List.of(3, 10, 17, 24, 25, 31);
 
+    private EventResult eventResult;
+
+
     public EventResult checkEvent(Menus menus, int day) {
         return EventResult.createOf(
                 List.of(checkGiveawayMenu(menus.totalOrderAmount()), checkWeekdayDiscount(menus, day),
                         checkWeekendDiscount(menus, day), checkSpecialDiscount(day), checkDdayDiscount(day)));
+    }
+
+    public long calculateTotalBenefitAmount(Menus menus, int day) {
+        eventResult = checkEvent(menus, day);
+        return eventResult.calculateTotalBenefit();
     }
 
 
@@ -54,4 +62,6 @@ public class EventChecker {
         return day;
 
     }
+
+
 }
