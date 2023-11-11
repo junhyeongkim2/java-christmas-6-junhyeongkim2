@@ -36,8 +36,8 @@ public class Planner {
         return calculator.calculateExpectedPaymentAmount();
     }
 
-    public Badge requestBadge(long totalBenefitAmount) {
-        return calculator.calculateEventBadge(totalBenefitAmount);
+    public Badge requestBadge() {
+        return calculator.calculateEventBadge();
     }
 
 

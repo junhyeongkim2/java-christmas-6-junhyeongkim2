@@ -9,6 +9,8 @@ public class EventResult {
 
     private final List<Long> eventResult;
 
+    private long totalBenefitAmount;
+
     public EventResult(List<Long> eventResult) {
         this.eventResult = eventResult;
     }
@@ -31,7 +33,8 @@ public class EventResult {
 
 
     public long calculateTotalBenefit() {
-        return eventResult.stream().mapToLong(Long::longValue).sum();
+        totalBenefitAmount = eventResult.stream().mapToLong(Long::longValue).sum();
+        return totalBenefitAmount;
     }
 
 
@@ -39,7 +42,7 @@ public class EventResult {
         return totalOrderAmount - eventResult.stream().skip(1).limit(4).mapToLong(Long::longValue).sum();
     }
 
-    public Badge generateBadge(long totalBenefitAmount) {
+    public Badge generateBadge() {
         return Badge.valueOf(totalBenefitAmount);
     }
 

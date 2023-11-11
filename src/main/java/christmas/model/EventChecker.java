@@ -32,8 +32,8 @@ public class EventChecker {
         return eventResult.getEventResult();
     }
 
-    public Badge checkEventBadge(long totalBenefitAmount) {
-        return eventResult.generateBadge(totalBenefitAmount);
+    public Badge checkEventBadge() {
+        return eventResult.generateBadge();
     }
 
 

@@ -96,13 +96,13 @@ public class PlannerTest {
     @Test
     void requestExpectedPaymentAmount_EqualResult_Success() {
         //given
-        EventResult eventResult;
         //when
+        planner.requestTotalOrderAmount(menus);
+        planner.requestEventResult(menus, 6);
         planner.requestTotalBenefitAmount(menus, 6);
-        eventResult = planner.requestEventResult(menus, 6);
         long expectedPaymentAmount = planner.requestExpectedPaymentAmount();
         //then
-        assertThat(expectedPaymentAmount).isEqualTo(30546);
+        assertThat(expectedPaymentAmount).isEqualTo(136454);
     }
 
 
@@ -113,7 +113,8 @@ public class PlannerTest {
         EventResult eventResult;
         //when
         eventResult = planner.requestEventResult(menus, 6);
-        Badge badge = planner.requestBadge(planner.requestTotalBenefitAmount(menus, 6));
+        planner.requestTotalBenefitAmount(menus, 6);
+        Badge badge = planner.requestBadge();
 
         //then
         assertThat(badge).isEqualTo(Badge.산타);

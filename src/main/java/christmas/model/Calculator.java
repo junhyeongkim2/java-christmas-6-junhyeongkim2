@@ -35,8 +35,8 @@ public class Calculator {
         return eventChecker.calculateExpectedPaymentAmount(totalOrderAmount);
     }
 
-    public Badge calculateEventBadge(long totalBenefitAmount) {
-        return eventChecker.checkEventBadge(totalBenefitAmount);
+    public Badge calculateEventBadge() {
+        return eventChecker.checkEventBadge();
     }
 
 

@@ -23,10 +23,9 @@ public class ChristmasController {
         OutputView.printTotalOrderAmount(planner.requestTotalOrderAmount(menus));
         OutputView.printGiveawayMenu(planner.requestGiveawayMenuResult());
         OutputView.printEventResult(planner.requestEventResult(menus, day).getEventResult());
-        long totalBenefitAmount = planner.requestTotalBenefitAmount(menus, day);
-        OutputView.printTotalBenefitAmount(totalBenefitAmount);
+        OutputView.printTotalBenefitAmount(planner.requestTotalBenefitAmount(menus, day));
         OutputView.printExpectedPaymentAmount(planner.requestExpectedPaymentAmount());
-        OutputView.printBadge(planner.requestBadge(totalBenefitAmount));
+        OutputView.printBadge(planner.requestBadge());
 
     }
 
