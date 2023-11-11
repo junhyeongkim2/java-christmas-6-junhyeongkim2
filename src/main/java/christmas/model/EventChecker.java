@@ -28,6 +28,10 @@ public class EventChecker {
         return eventResult.calculateExpectedPaymentAmount(totalOrderAmount);
     }
 
+    public Badge checkEventBadge(long totalBenefitAmount) {
+        return eventResult.generateBadge(totalBenefitAmount);
+    }
+
 
     public long checkGiveawayMenu(int totalOrderAmount) {
         if (totalOrderAmount >= 120000) {
@@ -38,7 +42,7 @@ public class EventChecker {
 
 
     public long checkWeekdayDiscount(Menus menus, int day) {
-        if (day % 7 != 1 && day % 7 != 2 && day != 25) {
+        if (day % 7 != 1 && day % 7 != 2) {
             return menus.totalEventMatchAmount("디저트");
         }
         return 0;

@@ -1,5 +1,6 @@
 package christmas;
 
+import christmas.model.Badge;
 import christmas.model.Calculator;
 import christmas.model.EventChecker;
 import christmas.model.EventResult;
@@ -46,7 +47,44 @@ public class EventResultTest {
         //then
         assertThat(expectedPaymentAmount).isEqualTo(135754);
 
+    }
 
+
+    @DisplayName("12월 이벤트 배지 산타 생성 테스트")
+    @Test
+    void generateBadge_EqualSanta_Success() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        Calculator calculator = new Calculator();
+        Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+
+        //when
+        EventResult eventResult = eventChecker.checkEvent(menus, 3);
+        int totalAmount = calculator.calculateTotalOrderAmount(menus);
+        long totalBenefitAmount = eventResult.calculateTotalBenefit();
+        long expectedPaymentAmount = eventResult.calculateExpectedPaymentAmount(totalAmount);
+        Badge badge = eventResult.generateBadge(totalBenefitAmount);
+
+        System.out.println(badge);
+        //then
+        assertThat(badge).isEqualTo(Badge.산타);
+    }
+
+    @DisplayName("12월 이벤트 배지 별 생성 테스트")
+    @Test
+    void generateBadge_EqualStar_Success() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1");
+        //when
+        EventResult eventResult = eventChecker.checkEvent(menus, 25);
+        long totalBenefitAmount = eventResult.calculateTotalBenefit();
+
+        Badge badge = eventResult.generateBadge(totalBenefitAmount);
+
+        System.out.println(badge);
+        //then
+        assertThat(badge).isEqualTo(Badge.별);
     }
 
 

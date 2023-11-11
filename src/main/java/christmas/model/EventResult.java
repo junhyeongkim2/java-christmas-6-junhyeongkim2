@@ -39,5 +39,9 @@ public class EventResult {
         return totalOrderAmount - eventResult.stream().skip(1).limit(4).mapToLong(Long::longValue).sum();
     }
 
+    public Badge generateBadge(long totalBenefitAmount) {
+        return Badge.valueOf(totalBenefitAmount);
+    }
+
 
 }
