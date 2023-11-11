@@ -1,5 +1,6 @@
 package christmas;
 
+import christmas.model.Calculator;
 import christmas.model.EventChecker;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menu;
@@ -26,8 +27,27 @@ public class EventResultTest {
         List<Long> events = eventResult.getEventResult();
 
         //then
-        OutputView.printEventResult(events);
 
     }
+
+    @DisplayName("예상 결제 금액 계산")
+    @Test
+    void calculateExpectedPaymentAmount_EqualResult_Success() {
+        //given
+        EventChecker eventChecker = new EventChecker();
+        Calculator calculator = new Calculator();
+        Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+
+        //when
+        EventResult eventResult = eventChecker.checkEvent(menus, 3);
+        int totalAmount = calculator.calculateTotalOrderAmount(menus);
+        long expectedPaymentAmount = eventResult.calculateExpectedPaymentAmount(totalAmount);
+        System.out.println(expectedPaymentAmount);
+        //then
+        assertThat(expectedPaymentAmount).isEqualTo(135754);
+
+
+    }
+
 
 }

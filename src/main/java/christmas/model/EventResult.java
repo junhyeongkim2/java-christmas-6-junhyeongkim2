@@ -3,6 +3,7 @@ package christmas.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class EventResult {
 
@@ -24,12 +25,18 @@ public class EventResult {
         return new EventResult(result);
     }
 
+    public List<Long> getEventResult() {
+        return Collections.unmodifiableList(this.eventResult);
+    }
+
+
     public long calculateTotalBenefit() {
         return eventResult.stream().mapToLong(Long::longValue).sum();
     }
 
-    public List<Long> getEventResult() {
-        return Collections.unmodifiableList(this.eventResult);
+
+    public long calculateExpectedPaymentAmount(int totalOrderAmount) {
+        return totalOrderAmount - eventResult.stream().skip(1).limit(4).mapToLong(Long::longValue).sum();
     }
 
 
