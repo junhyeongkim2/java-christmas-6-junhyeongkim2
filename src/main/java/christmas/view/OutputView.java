@@ -9,9 +9,8 @@ import java.util.stream.Collectors;
 public class OutputView {
 
 
-    public static void printTotalOrderAmount(int totalOrderAmount) {
-        System.out.println("<할인 전 총주문 금액>");
-        System.out.println(totalOrderAmount + "원");
+    public static void printStartBenefitMessage(int day) {
+        System.out.println("12월" + " " + day + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
     }
 
     public static void printMenus(Map<Menu, Integer> menus) {
@@ -20,6 +19,11 @@ public class OutputView {
                 key -> System.out.println(key + " " + menus.get(key) / Menu.valueOf(String.valueOf(key)).getPrice())
         );
         System.out.println();
+    }
+
+    public static void printTotalOrderAmount(int totalOrderAmount) {
+        System.out.println("<할인 전 총주문 금액>");
+        System.out.println(totalOrderAmount + "원");
     }
 
 
@@ -50,15 +54,14 @@ public class OutputView {
         }
     }
 
+    public static void printTotalBenefitAmount(long totalBenefitAmount) {
+        System.out.println("<총혜택 금액>");
+        System.out.println("-" + totalBenefitAmount);
+    }
 
     public static void printExpectedPaymentAmount(long expectedPaymentAmount) {
         System.out.println("<할인 후 예상 결제 금액>");
         System.out.println(expectedPaymentAmount);
-    }
-
-    public static void printTotalBenefitAmount(long totalBenefitAmount) {
-        System.out.println("<총혜택 금액>");
-        System.out.println("-" + totalBenefitAmount);
     }
 
 
