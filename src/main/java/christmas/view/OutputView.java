@@ -29,8 +29,24 @@ public class OutputView {
         if (giveawayMenu == false) {
             System.out.println("없음");
         }
-
     }
 
+    public static void printEventResult(List<Long> eventResult) {
+        System.out.println("<혜택 내역>");
+        System.out.println("크리스마스 디데이 할인: -" + eventResult.get(4));
+        isWeekedayOrWeekend(eventResult.get(1), eventResult.get(2));
+        System.out.println("특별 할인: -" + eventResult.get(3));
+        System.out.println("증정 이벤트: -" + eventResult.get(0));
+    }
 
+    public static void isWeekedayOrWeekend(long weekday, long weekend) {
+        if (weekday != 0) {
+            System.out.println("평일 할인: -" + weekday);
+        }
+        if (weekend != 0) {
+            System.out.println("주말 할인: -" + weekend);
+        }
+    }
 }
+
+

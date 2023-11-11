@@ -1,6 +1,7 @@
 package christmas.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EventResult {
@@ -25,6 +26,10 @@ public class EventResult {
 
     public long calculateTotalBenefit() {
         return eventResult.stream().mapToLong(Long::longValue).sum();
+    }
+
+    public List<Long> getEventResult() {
+        return Collections.unmodifiableList(this.eventResult);
     }
 
 
