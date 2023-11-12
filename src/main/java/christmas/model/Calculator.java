@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.model.Event.EventType;
 import christmas.model.Menu.Menus;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Calculator {
         return totalOrderAmount;
     }
 
-    public long calculateGiveawayMenu() {
+    public EventType calculateGiveawayMenu() {
         return eventChecker.checkGiveawayMenu(totalOrderAmount);
     }
 

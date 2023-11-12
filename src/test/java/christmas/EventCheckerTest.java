@@ -1,8 +1,10 @@
 package christmas;
 
+import christmas.model.Event.EventType;
 import christmas.model.EventChecker;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
+import jdk.jfr.Event;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +19,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        long checkFlag = eventChecker.checkGiveawayMenu(125000);
+        EventType eventType = eventChecker.checkGiveawayMenu(125000);
         //then
-        assertThat(checkFlag).isEqualTo(1);
+        assertThat(eventType.getDiscount()).isEqualTo(25000);
     }
 
     @DisplayName("증정 이벤트 당첨 실패 테스트")
@@ -28,9 +30,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        long checkFlag = eventChecker.checkGiveawayMenu(5000);
+        EventType eventType = eventChecker.checkGiveawayMenu(5000);
         //then
-        assertThat(checkFlag).isEqualTo(0);
+        assertThat(eventType.getDiscount()).isEqualTo(0);
     }
 
 
@@ -42,11 +44,11 @@ public class EventCheckerTest {
         Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
 
         //when
-        long count = eventChecker.checkWeekdayDiscount(menus, 6);
+        EventType eventType = eventChecker.checkWeekdayDiscount(menus, 6);
 
         //then
-        assertThat(count).isNotNull();
-        assertThat(count).isEqualTo(7);
+        assertThat(eventType).isNotNull();
+        assertThat(eventType).isEqualTo(EventType.WEEKDAY);
 
     }
 
@@ -58,10 +60,10 @@ public class EventCheckerTest {
         Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
 
         //when
-        long count = eventChecker.checkWeekdayDiscount(menus, 30);
+        EventType eventType = eventChecker.checkWeekdayDiscount(menus, 30);
 
         //then
-        assertThat(count).isEqualTo(0);
+        assertThat(eventType).isEqualTo(EventType.WEEKDAY);
     }
 
     @DisplayName("주말 할인 조사 성공 테스트")
@@ -72,11 +74,11 @@ public class EventCheckerTest {
         Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1,아이스크림-1,티본스테이크-5,제로콜라-1");
 
         //when
-        long count = eventChecker.checkWeekendDiscount(menus, 8);
+        EventType eventType = eventChecker.checkWeekendDiscount(menus, 8);
 
         //then
-        assertThat(count).isNotNull();
-        assertThat(count).isEqualTo(5);
+        assertThat(eventType).isNotNull();
+        assertThat(eventType).isEqualTo(EventType.WEEKEND);
 
     }
 
@@ -88,10 +90,10 @@ public class EventCheckerTest {
         Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1,아이스크림-1,티본스테이크-5,제로콜라-1");
 
         //when
-        long count = eventChecker.checkWeekendDiscount(menus, 28);
+        EventType eventType = eventChecker.checkWeekendDiscount(menus, 28);
 
         //then
-        assertThat(count).isEqualTo(0);
+        assertThat(eventType).isEqualTo(EventType.WEEKEND);
 
     }
 
@@ -102,9 +104,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        long specialFlag = eventChecker.checkSpecialDiscount(31);
+        EventType eventType = eventChecker.checkSpecialDiscount(31);
         //then
-        assertThat(specialFlag).isEqualTo(1);
+        assertThat(eventType.getDiscount()).isEqualTo(1000);
     }
 
     @DisplayName("특별 할인 조사 실패 테스트")
@@ -113,9 +115,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        long specialFlag = eventChecker.checkSpecialDiscount(13);
+        EventType eventType = eventChecker.checkSpecialDiscount(13);
         //then
-        assertThat(specialFlag).isEqualTo(0);
+        assertThat(eventType.getDiscount()).isEqualTo(0);
     }
 
     @DisplayName("디데이 할인 성공 테스트")
@@ -124,9 +126,9 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        Long count = eventChecker.checkDdayDiscount(25);
+        EventType eventType = eventChecker.checkDdayDiscount(25);
         //then
-        assertThat(count).isEqualTo(25);
+        assertThat(eventType).isEqualTo(EventType.DDAY);
     }
 
 
@@ -136,11 +138,10 @@ public class EventCheckerTest {
         //given
         EventChecker eventChecker = new EventChecker();
         //when
-        Long count = eventChecker.checkDdayDiscount(28);
+        EventType eventType = eventChecker.checkDdayDiscount(28);
         //then
-        assertThat(count).isEqualTo(0);
+        assertThat(eventType).isEqualTo(EventType.DDAY);
     }
-
 
 
 }

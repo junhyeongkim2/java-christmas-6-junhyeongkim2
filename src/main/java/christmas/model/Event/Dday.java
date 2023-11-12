@@ -2,22 +2,28 @@ package christmas.model.Event;
 
 import christmas.model.DiscountEvent;
 import christmas.model.Menu.Menus;
+import jdk.jfr.Event;
 
 public class Dday extends DiscountEvent {
 
     @Override
-    public int getDiscountAmount() {
-        return 0;
+    protected EventType calculateDiscountAmount(Menus menus, int day) {
+        return null;
     }
 
     @Override
-    protected int isSatisfiedBy(Menus menus, int day) {
-        return 0;
+    protected EventType calculateDiscountAmount(int day) {
+        if (day > 25) {
+            return EventType.DDAY;
+        }
+        EventType.DDAY.addDiscount((day * 100) + 900);
+        return EventType.DDAY;
     }
 
     @Override
-    protected int isSatisfiedBy(int day) {
-        return 0;
+    protected EventType calculateDiscountAmount(long totalOrderAmount) {
+        return null;
     }
+
 
 }

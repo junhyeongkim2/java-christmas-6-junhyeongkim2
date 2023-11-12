@@ -2,6 +2,7 @@ package christmas;
 
 import christmas.model.Badge;
 import christmas.model.Calculator;
+import christmas.model.Event.EventType;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
@@ -58,9 +59,9 @@ public class PlannerTest {
         long result = 0;
         //when
         planner.requestTotalOrderAmount(menus);
-        result = planner.requestGiveawayMenuResult();
+        EventType eventType = planner.requestGiveawayMenuResult();
         //then
-        assertThat(result).isEqualTo(1);
+        assertThat(eventType.getDiscount()).isEqualTo(1000);
     }
 
     @DisplayName("이벤트 결과 요청 정상 작동 테스트")

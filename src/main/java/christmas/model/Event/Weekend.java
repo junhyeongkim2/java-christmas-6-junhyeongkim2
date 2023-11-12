@@ -4,18 +4,23 @@ import christmas.model.DiscountEvent;
 import christmas.model.Menu.Menus;
 
 public class Weekend extends DiscountEvent {
+
     @Override
-    protected int getDiscountAmount() {
-        return 0;
+    protected EventType calculateDiscountAmount(Menus menus, int day) {
+        if (day % 7 == 1 || day % 7 == 2) {
+            EventType.WEEKEND.addDiscount(menus.totalEventMatchAmount("메인") * 2023);
+            return EventType.WEEKEND;
+        }
+        return EventType.WEEKEND;
     }
 
     @Override
-    protected int isSatisfiedBy(Menus menus, int day) {
-        return 0;
+    protected EventType calculateDiscountAmount(int day) {
+        return null;
     }
 
     @Override
-    protected int isSatisfiedBy(int day) {
-        return 0;
+    protected EventType calculateDiscountAmount(long totalOrderAmount) {
+        return null;
     }
 }

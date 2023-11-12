@@ -2,6 +2,7 @@ package christmas;
 
 import christmas.model.Badge;
 import christmas.model.Calculator;
+import christmas.model.Event.EventType;
 import christmas.model.EventChecker;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menu;
@@ -25,7 +26,7 @@ public class EventResultTest {
         Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
         //when
         EventResult eventResult = eventChecker.checkEvent(menus, 3);
-        List<Long> events = eventResult.getEventResult();
+        List<EventType> events = eventResult.getEventResult();
 
         //then
 
