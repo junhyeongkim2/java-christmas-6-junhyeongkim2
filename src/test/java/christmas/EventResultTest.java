@@ -2,12 +2,13 @@ package christmas;
 
 import christmas.model.Badge;
 import christmas.model.Calculator;
+import christmas.model.DiscountEvent;
+import christmas.model.Event.DiscountInfo;
 import christmas.model.Event.EventType;
 import christmas.model.EventChecker;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
-import christmas.view.OutputView;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ public class EventResultTest {
         Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
         //when
         EventResult eventResult = eventChecker.checkEvent(menus, 3);
-        List<EventType> events = eventResult.getEventResult();
+        List<DiscountInfo> events = eventResult.getEventResult();
 
         //then
 

@@ -1,9 +1,9 @@
 package christmas.model;
 
+import christmas.model.Event.DiscountInfo;
 import christmas.model.Event.EventType;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
-import java.util.List;
 
 public class Planner {
 
@@ -21,12 +21,12 @@ public class Planner {
         return calculator.calculateTotalOrderAmount(menus);
     }
 
-    public EventType requestGiveawayMenuResult() {
-        return calculator.calculateGiveawayMenu();
+    public DiscountInfo requestGiveawayMenuResult(Menus menus, int day) {
+        return calculator.calculateGiveawayMenu(menus, day);
     }
 
     public EventResult requestEventResult(Menus menus, int day) {
-        return calculator.calculateEventResult(menus,day);
+        return calculator.calculateEventResult(menus, day);
     }
 
     public long requestTotalBenefitAmount(Menus menus, int day) {

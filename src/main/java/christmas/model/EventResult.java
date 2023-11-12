@@ -1,37 +1,41 @@
 package christmas.model;
 
+import christmas.model.Event.DiscountInfo;
 import christmas.model.Event.EventType;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EventResult {
 
-    private final List<EventType> eventResult;
+    private final List<DiscountInfo> eventResult;
 
     private long totalBenefitAmount;
 
-    public EventResult(List<EventType> eventResult) {
+    public EventResult(List<DiscountInfo> eventResult) {
         this.eventResult = eventResult;
     }
 
-    public static EventResult createOf(List<EventType> eventResult) {
-
-        return new EventResult(eventResult);
+    public static EventResult createOf(List<DiscountInfo> eventResult) {
+        List<DiscountInfo> results = eventResult.stream().filter(result -> result.getDiscount() != 0)
+                .collect(Collectors.toList());
+        return new EventResult(results);
     }
 
-    public List<EventType> getEventResult() {
+    public List<DiscountInfo> getEventResult() {
         return Collections.unmodifiableList(this.eventResult);
     }
 
 
     public long calculateTotalBenefit() {
-        totalBenefitAmount = eventResult.stream().mapToLong(EventType::getDiscount).sum();
+        totalBenefitAmount = eventResult.stream().mapToLong(DiscountInfo::getDiscount).sum();
         return totalBenefitAmount;
     }
 
 
     public long calculateExpectedPaymentAmount(long totalOrderAmount) {
-        return totalOrderAmount - eventResult.stream().skip(1).limit(4).mapToLong(EventType::getDiscount).sum();
+        return totalOrderAmount + eventResult.stream().filter(result -> result.getName() != "증정 이벤트")
+                .mapToLong(DiscountInfo::getDiscount).sum();
     }
 
     public Badge generateBadge() {

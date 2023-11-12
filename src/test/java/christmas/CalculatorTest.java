@@ -1,11 +1,10 @@
 package christmas;
 
 import christmas.model.Calculator;
-import christmas.model.EventResult;
+import christmas.model.EventChecker;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 import christmas.view.OutputView;
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -48,6 +47,8 @@ public class CalculatorTest {
         //given
         Calculator calculator = new Calculator();
         Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        EventChecker eventChecker = new EventChecker();
+        eventChecker.checkEvent(menus, 3);
 
         //when
         long result = calculator.calculateTotalBenefitAmount(menus, 3);

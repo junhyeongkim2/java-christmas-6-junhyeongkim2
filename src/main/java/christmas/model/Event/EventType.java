@@ -1,12 +1,14 @@
 package christmas.model.Event;
 
+import christmas.model.Menu.Menu;
+
 public enum EventType {
 
-    DDAY("크리스마스 디데이 할인", 0),
-    WEEKDAY("평일 할인", 0),
-    WEEKEND("주말 할인", 0),
-    SPECIAL("특별 할인", 0),
-    GIVEAWAY("증정 이벤트", 0);
+    DDAY("크리스마스 디데이 할인", 100),
+    WEEKDAY("평일 할인", 2023),
+    WEEKEND("주말 할인", 2023),
+    SPECIAL("특별 할인", 1000),
+    GIVEAWAY("증정 이벤트", Menu.샴페인.getPrice());
 
     private final String name;
     private int discount;
@@ -16,10 +18,9 @@ public enum EventType {
         this.discount = discount;
     }
 
-    public void addDiscount(long discount) {
-        this.discount += discount;
+    public String getName() {
+        return this.name;
     }
-
 
     public int getDiscount() {
         return this.discount;

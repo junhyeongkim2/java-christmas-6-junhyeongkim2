@@ -8,22 +8,16 @@ public class Special extends DiscountEvent {
     private final List<Integer> specialDay = List.of(3, 10, 17, 24, 25, 31);
 
     @Override
-    protected EventType calculateDiscountAmount(Menus menus, int day) {
+    protected DiscountInfo calculateDiscountAmount(Menus menus, int day) {
         return null;
     }
 
     @Override
-    protected EventType calculateDiscountAmount(int day) {
+    protected DiscountInfo calculateDiscountAmount(int day) {
         if (specialDay.contains(day)) {
-            EventType.SPECIAL.addDiscount(1000);
-            return EventType.SPECIAL;
+            return new DiscountInfo(EventType.SPECIAL.getName(), -EventType.SPECIAL.getDiscount());
         }
-        return EventType.SPECIAL;
-    }
-
-    @Override
-    protected EventType calculateDiscountAmount(long totalOrderAmount) {
-        return null;
+        return new DiscountInfo(EventType.SPECIAL.getName(), 0);
     }
 
 }

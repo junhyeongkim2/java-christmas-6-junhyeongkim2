@@ -1,13 +1,13 @@
 package christmas.model;
 
 import christmas.model.Event.Dday;
+import christmas.model.Event.DiscountInfo;
 import christmas.model.Event.EventType;
 import christmas.model.Event.Giveaway;
 import christmas.model.Event.Special;
 import christmas.model.Event.Weekday;
 import christmas.model.Event.Weekend;
 import christmas.model.Menu.Menus;
-import jdk.jfr.Event;
 
 public abstract class DiscountEvent {
 
@@ -32,11 +32,9 @@ public abstract class DiscountEvent {
     }
 
 
-    abstract protected EventType calculateDiscountAmount(Menus menus, int day);
+    abstract protected DiscountInfo calculateDiscountAmount(Menus menus, int day);
 
-    abstract protected EventType calculateDiscountAmount(int day);
-
-    abstract protected EventType calculateDiscountAmount(long totalOrderAmount);
+    abstract protected DiscountInfo calculateDiscountAmount(int day);
 
 
 }

@@ -1,14 +1,11 @@
 package christmas;
 
 import christmas.model.Badge;
-import christmas.model.Calculator;
+import christmas.model.Event.DiscountInfo;
 import christmas.model.Event.EventType;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
-import java.util.ArrayList;
-import java.util.List;
-import net.bytebuddy.utility.dispatcher.JavaDispatcher.Defaults;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -59,9 +56,9 @@ public class PlannerTest {
         long result = 0;
         //when
         planner.requestTotalOrderAmount(menus);
-        EventType eventType = planner.requestGiveawayMenuResult();
+        DiscountInfo discountInfo = planner.requestGiveawayMenuResult(menus,6);
         //then
-        assertThat(eventType.getDiscount()).isEqualTo(1000);
+        assertThat(discountInfo.getDiscount()).isEqualTo(1000);
     }
 
     @DisplayName("이벤트 결과 요청 정상 작동 테스트")
