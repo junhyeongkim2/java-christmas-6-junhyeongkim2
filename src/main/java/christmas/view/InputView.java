@@ -6,10 +6,13 @@ import christmas.model.Menu.Menus;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 
 public class InputView {
+
+    private static final String MENU_PATTERN = "([\\w\\s]+-\\d+,)*[\\w\\s]+-\\d+";
 
     public static String readVisitDay() {
         System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
@@ -26,7 +29,14 @@ public class InputView {
 
     public static Map<Menu, Integer> readMenus() {
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
-        return splitMenuAndCount(splitMenuWithComma(Console.readLine()));
+        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
+        try {
+            menus = splitMenuAndCount(splitMenuWithComma(validateMenuForm(Console.readLine())));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return readMenus();
+        }
+        return menus;
     }
 
 
@@ -41,20 +51,16 @@ public class InputView {
     public static Map<Menu, Integer> splitMenuAndCount(String[] splitMenuWithComma) {
         Map<Menu, Integer> orderedMenu = new EnumMap(Menu.class);
         int menuCount = 0;
-        try {
-            for (String splitMenu : splitMenuWithComma) {
-                String[] menuAndCount = splitMenuWithHypen(splitMenu);
-                validateIsIntegerMenuCount(menuAndCount[1]);
-                validateIsContainMenu(menuAndCount[0]);
-                validateIsUnderTwentyMenu(menuCount);
-                validateIsOverOneMenu(Integer.parseInt(menuAndCount[1]));
-                menuCount += Integer.parseInt(menuAndCount[1]);
-                orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
-                        Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return readMenus();
+
+        for (String splitMenu : splitMenuWithComma) {
+            String[] menuAndCount = splitMenuWithHypen(splitMenu);
+            validateIsIntegerMenuCount(menuAndCount[1]);
+            validateIsContainMenu(menuAndCount[0]);
+            validateIsUnderTwentyMenu(menuCount);
+            validateIsOverOneMenu(Integer.parseInt(menuAndCount[1]));
+            menuCount += Integer.parseInt(menuAndCount[1]);
+            orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
+                    Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
         }
 
         return orderedMenu;
@@ -85,6 +91,13 @@ public class InputView {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
+    }
+
+    public static String validateMenuForm(String input) {
+        if (!Pattern.matches(MENU_PATTERN, input)) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+        return input;
     }
 
 
