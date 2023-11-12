@@ -44,6 +44,7 @@ public class InputView {
             for (String splitMenu : splitMenuWithComma) {
                 String[] menuAndCount = splitMenuWithHypen(splitMenu);
                 validateIsContainMenu(menuAndCount[0]);
+                validateIsUnderTwentyMenu(Integer.parseInt(menuAndCount[1]));
                 orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                         Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
             }
@@ -58,6 +59,12 @@ public class InputView {
     public static void validateIsContainMenu(String menu) {
         Boolean find = Arrays.stream(Menu.values()).map(Menu::getName).collect(Collectors.toList()).contains(menu);
         if (find == false) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
+
+    public static void validateIsUnderTwentyMenu(int count){
+        if(count>20){
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }
