@@ -8,8 +8,8 @@ public class Planner {
 
     Calculator calculator;
 
-    public Planner(Calculator calculator) {
-        this.calculator = calculator;
+    public Planner() {
+        this.calculator = new Calculator();
     }
 
     public Menus isContainMenu(String menuInput) {

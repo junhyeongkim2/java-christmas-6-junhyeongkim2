@@ -23,7 +23,7 @@ public class PlannerTest {
 
     @BeforeEach
     void setUp() {
-        planner = new Planner(new Calculator());
+        planner = new Planner();
         menus = planner.isContainMenu("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
     }
 
