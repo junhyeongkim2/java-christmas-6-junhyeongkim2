@@ -1,7 +1,6 @@
 package christmas.model;
 
 import christmas.model.Event.DiscountInfo;
-import christmas.model.Event.EventType;
 import christmas.model.Menu.Menus;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class EventChecker {
 
 
     public EventResult checkEvent(Menus menus, int day) {
-        return EventResult.createOf(
+        return EventResult.createFrom(
                 List.of(checkDdayDiscount(day), checkWeekdayDiscount(menus, day), checkWeekendDiscount(menus, day),
                         checkSpecialDiscount(day), checkGiveawayMenu(menus, day)));
     }

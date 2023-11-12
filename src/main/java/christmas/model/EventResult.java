@@ -1,7 +1,6 @@
 package christmas.model;
 
 import christmas.model.Event.DiscountInfo;
-import christmas.model.Event.EventType;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +15,7 @@ public class EventResult {
         this.eventResult = eventResult;
     }
 
-    public static EventResult createOf(List<DiscountInfo> eventResult) {
+    public static EventResult createFrom(List<DiscountInfo> eventResult) {
         List<DiscountInfo> results = eventResult.stream().filter(result -> result.getDiscount() != 0)
                 .collect(Collectors.toList());
         return new EventResult(results);
