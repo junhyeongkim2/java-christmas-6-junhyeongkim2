@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
 public class OutputView {
     private static final DecimalFormat df = new DecimalFormat("###,###");
 
+    public static void printStartChristmasPlannerMessage() {
+        System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
+    }
+
     public static void printStartBenefitMessage(int day) {
         System.out.println("12월" + " " + day + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n");
     }
@@ -49,7 +53,8 @@ public class OutputView {
             return;
         }
         eventResult.stream()
-                .forEach(result -> System.out.println(result.getName() + ": " + replaceToDecimalFormat(result.getDiscount()) + "원"));
+                .forEach(result -> System.out.println(
+                        result.getName() + ": " + replaceToDecimalFormat(result.getDiscount()) + "원"));
         System.out.println();
     }
 
