@@ -2,9 +2,7 @@ package christmas;
 
 import christmas.model.Badge;
 import christmas.model.Calculator;
-import christmas.model.DiscountEvent;
 import christmas.model.Event.DiscountInfo;
-import christmas.model.Event.EventType;
 import christmas.model.EventChecker;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menu;
@@ -24,7 +22,7 @@ public class EventResultTest {
 
         //given
         EventChecker eventChecker = new EventChecker();
-        Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        Menus menus = Menu.createMenusFrom("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
         //when
         EventResult eventResult = eventChecker.checkEvent(menus, 3);
         List<DiscountInfo> events = eventResult.getEventResult();
@@ -39,7 +37,7 @@ public class EventResultTest {
         //given
         EventChecker eventChecker = new EventChecker();
         Calculator calculator = new Calculator();
-        Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        Menus menus = Menu.createMenusFrom("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
 
         //when
         EventResult eventResult = eventChecker.checkEvent(menus, 3);
@@ -58,7 +56,7 @@ public class EventResultTest {
         //given
         EventChecker eventChecker = new EventChecker();
         Calculator calculator = new Calculator();
-        Menus menus = Menu.splitMenuWithNameAndCount("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        Menus menus = Menu.createMenusFrom("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
 
         //when
         EventResult eventResult = eventChecker.checkEvent(menus, 3);
@@ -77,7 +75,7 @@ public class EventResultTest {
     void generateBadge_EqualStar_Success() {
         //given
         EventChecker eventChecker = new EventChecker();
-        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1");
+        Menus menus = Menu.createMenusFrom("초코케이크-1");
         //when
         EventResult eventResult = eventChecker.checkEvent(menus, 25);
         long totalBenefitAmount = eventResult.calculateTotalBenefit();

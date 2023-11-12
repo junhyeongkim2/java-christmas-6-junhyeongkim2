@@ -21,7 +21,7 @@
 //        EventChecker eventChecker = new EventChecker();
 //        Menus menus;
 //        //when
-//        menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
+//        menus = Menu.createMenusFrom("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
 //        EventType eventType = eventChecker.checkGiveawayMenu(menus, 6);
 //        //then
 //        assertThat(eventType.getDiscount()).isEqualTo(25000);
@@ -34,7 +34,7 @@
 //        EventChecker eventChecker = new EventChecker();
 //        Menus menus;
 //        //when
-//        menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
+//        menus = Menu.createMenusFrom("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
 //        EventType eventType = eventChecker.checkGiveawayMenu(menus,6);
 //        //then
 //        assertThat(eventType.getDiscount()).isEqualTo(0);
@@ -46,7 +46,7 @@
 //    void checkWeekdayDiscount_IsWeekday_Success() {
 //        //given
 //        EventChecker eventChecker = new EventChecker();
-//        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
+//        Menus menus = Menu.createMenusFrom("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
 //
 //        //when
 //        EventType eventType = eventChecker.checkWeekdayDiscount(menus, 6);
@@ -62,7 +62,7 @@
 //    void checkWeekdayDiscount_IsNotWeekday_ReturnZero() {
 //        //given
 //        EventChecker eventChecker = new EventChecker();
-//        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
+//        Menus menus = Menu.createMenusFrom("초코케이크-5,아이스크림-2,티본스테이크-1,제로콜라-1");
 //
 //        //when
 //        EventType eventType = eventChecker.checkWeekdayDiscount(menus, 30);
@@ -76,7 +76,7 @@
 //    void checkWeekendDiscount_IsWeekend_Success() {
 //        //given
 //        EventChecker eventChecker = new EventChecker();
-//        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1,아이스크림-1,티본스테이크-5,제로콜라-1");
+//        Menus menus = Menu.createMenusFrom("초코케이크-1,아이스크림-1,티본스테이크-5,제로콜라-1");
 //
 //        //when
 //        EventType eventType = eventChecker.checkWeekendDiscount(menus, 8);
@@ -92,7 +92,7 @@
 //    void checkWeekendDiscount_IsNotWeekend_ReturnZero() {
 //        //given
 //        EventChecker eventChecker = new EventChecker();
-//        Menus menus = Menu.splitMenuWithNameAndCount("초코케이크-1,아이스크림-1,티본스테이크-5,제로콜라-1");
+//        Menus menus = Menu.createMenusFrom("초코케이크-1,아이스크림-1,티본스테이크-5,제로콜라-1");
 //
 //        //when
 //        EventType eventType = eventChecker.checkWeekendDiscount(menus, 28);

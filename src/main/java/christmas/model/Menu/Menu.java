@@ -2,11 +2,8 @@ package christmas.model.Menu;
 
 import java.util.Arrays;
 import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 
 public enum Menu {
 
@@ -39,7 +36,7 @@ public enum Menu {
         }
     }
 
-    public static Menus splitMenuWithNameAndCount(String menuInput) {
+    public static Menus createMenusFrom(String menuInput) {
         return splitMenuAndCount(splitMenuWithComma(menuInput));
     }
 

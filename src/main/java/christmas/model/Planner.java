@@ -1,7 +1,6 @@
 package christmas.model;
 
 import christmas.model.Event.DiscountInfo;
-import christmas.model.Event.EventType;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 
@@ -14,7 +13,7 @@ public class Planner {
     }
 
     public Menus isContainMenu(String menuInput) {
-        return Menu.splitMenuWithNameAndCount(menuInput);
+        return Menu.createMenusFrom(menuInput);
     }
 
     public long requestTotalOrderAmount(Menus menus) {

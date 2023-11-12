@@ -2,12 +2,6 @@ package christmas;
 
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
-import christmas.model.Planner;
-import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +21,7 @@ public class MenusTest {
         //when
 
         //then
-        assertThatThrownBy(() -> Menu.splitMenuWithNameAndCount(menuInput)).isInstanceOf(
+        assertThatThrownBy(() -> Menu.createMenusFrom(menuInput)).isInstanceOf(
                 IllegalArgumentException.class);
     }
 
@@ -40,7 +34,7 @@ public class MenusTest {
         String menuInput = "타파스-1,제로콜라-1,티본스테이크-2";
 
         //when
-        Menus menus = Menu.splitMenuWithNameAndCount(menuInput);
+        Menus menus = Menu.createMenusFrom(menuInput);
 
         //then
         assertThat(menus.getMenus().size()).isEqualTo(11);
