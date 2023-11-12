@@ -4,13 +4,14 @@ import christmas.model.Badge;
 import christmas.model.Event.DiscountInfo;
 import christmas.model.Event.EventType;
 import christmas.model.Menu.Menu;
+import java.text.DecimalFormat;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputView {
-
+    private static final DecimalFormat df = new DecimalFormat("###,###");
 
     public static void printStartBenefitMessage(int day) {
         System.out.println("12월" + " " + day + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n");
@@ -27,7 +28,7 @@ public class OutputView {
 
     public static void printTotalOrderAmount(long totalOrderAmount) {
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(totalOrderAmount + "원\n");
+        System.out.println(replaceToDecimalFormat(totalOrderAmount) + "원\n");
     }
 
 
@@ -48,23 +49,27 @@ public class OutputView {
             return;
         }
         eventResult.stream()
-                .forEach(result -> System.out.println(result.getName() + ": " + result.getDiscount() + "원"));
+                .forEach(result -> System.out.println(result.getName() + ": " + replaceToDecimalFormat(result.getDiscount()) + "원"));
         System.out.println();
     }
 
     public static void printTotalBenefitAmount(long totalBenefitAmount) {
         System.out.println("<총혜택 금액>");
-        System.out.println(+ totalBenefitAmount + "원\n");
+        System.out.println(replaceToDecimalFormat(+totalBenefitAmount) + "원\n");
     }
 
     public static void printExpectedPaymentAmount(long expectedPaymentAmount) {
         System.out.println("<할인 후 예상 결제 금액>");
-        System.out.println(expectedPaymentAmount + "원\n");
+        System.out.println(replaceToDecimalFormat(expectedPaymentAmount) + "원\n");
     }
 
     public static void printBadge(Badge badge) {
         System.out.println("<12월 이벤트 배지>");
         System.out.println(badge);
+    }
+
+    public static String replaceToDecimalFormat(long amount) {
+        return df.format(amount);
     }
 
 
