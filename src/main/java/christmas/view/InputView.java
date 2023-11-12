@@ -47,6 +47,7 @@ public class InputView {
                 menuCount += Integer.parseInt(menuAndCount[1]);
                 validateIsContainMenu(menuAndCount[0]);
                 validateIsUnderTwentyMenu(menuCount);
+                validateIsOverOneMenu(Integer.parseInt(menuAndCount[1]));
                 orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                         Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
             }
@@ -67,6 +68,12 @@ public class InputView {
 
     public static void validateIsUnderTwentyMenu(int count) {
         if (count > 20) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
+
+    public static void validateIsOverOneMenu(int count) {
+        if (count <= 1) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }
