@@ -5,7 +5,6 @@ import christmas.model.Calculator;
 import christmas.model.Event.DiscountInfo;
 import christmas.model.EventChecker;
 import christmas.model.EventResult;
-import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
 import christmas.view.InputView;
@@ -28,7 +27,7 @@ public class EventResultTest {
         Menus menus = planner.isContainMenu(
                 InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
         //when
-        EventResult eventResult = eventChecker.checkEvent(menus, 3);
+        EventResult eventResult = eventChecker.createEventResult(menus, 3);
         List<DiscountInfo> events = eventResult.getEventResult();
 
         //then
@@ -45,7 +44,7 @@ public class EventResultTest {
         Menus menus = planner.isContainMenu(
                 InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
         //when
-        EventResult eventResult = eventChecker.checkEvent(menus, 3);
+        EventResult eventResult = eventChecker.createEventResult(menus, 3);
         long totalAmount = calculator.calculateTotalOrderAmount(menus);
         long expectedPaymentAmount = eventResult.calculateExpectedPaymentAmount(totalAmount);
         System.out.println(expectedPaymentAmount);
@@ -66,7 +65,7 @@ public class EventResultTest {
                 InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
 
         //when
-        EventResult eventResult = eventChecker.checkEvent(menus, 3);
+        EventResult eventResult = eventChecker.createEventResult(menus, 3);
         long totalAmount = calculator.calculateTotalOrderAmount(menus);
         long totalBenefitAmount = eventResult.calculateTotalBenefit();
         long expectedPaymentAmount = eventResult.calculateExpectedPaymentAmount(totalAmount);
@@ -86,7 +85,7 @@ public class EventResultTest {
         Menus menus = planner.isContainMenu(
                 InputView.splitMenuAndCount(InputView.splitMenuWithComma("초코케이크-1")));
         //when
-        EventResult eventResult = eventChecker.checkEvent(menus, 25);
+        EventResult eventResult = eventChecker.createEventResult(menus, 25);
         long totalBenefitAmount = eventResult.calculateTotalBenefit();
 
         Badge badge = eventResult.generateBadge();

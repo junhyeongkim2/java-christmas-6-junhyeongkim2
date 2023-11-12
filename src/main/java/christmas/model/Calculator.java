@@ -1,7 +1,6 @@
 package christmas.model;
 
 import christmas.model.Event.DiscountInfo;
-import christmas.model.Event.EventType;
 import christmas.model.Menu.Menus;
 
 public class Calculator {
@@ -25,7 +24,7 @@ public class Calculator {
     }
 
     public EventResult calculateEventResult(Menus menus, int day) {
-        return eventChecker.checkEvent(menus, day);
+        return eventChecker.createEventResult(menus, day);
     }
 
     public long calculateTotalBenefitAmount(Menus menus, int day) {

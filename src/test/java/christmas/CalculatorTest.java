@@ -2,7 +2,6 @@ package christmas;
 
 import christmas.model.Calculator;
 import christmas.model.EventChecker;
-import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
 import christmas.view.InputView;
@@ -56,7 +55,7 @@ public class CalculatorTest {
         Menus menus = planner.isContainMenu(
                 InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
         EventChecker eventChecker = new EventChecker();
-        eventChecker.checkEvent(menus, 3);
+        eventChecker.createEventResult(menus, 3);
 
         //when
         long result = calculator.calculateTotalBenefitAmount(menus, 3);

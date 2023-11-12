@@ -9,14 +9,14 @@ public class EventChecker {
     private EventResult eventResult;
 
 
-    public EventResult checkEvent(Menus menus, int day) {
+    public EventResult createEventResult(Menus menus, int day) {
         return EventResult.createFrom(
                 List.of(checkDdayDiscount(day), checkWeekdayDiscount(menus, day), checkWeekendDiscount(menus, day),
                         checkSpecialDiscount(day), checkGiveawayMenu(menus, day)));
     }
 
     public long calculateTotalBenefitAmount(Menus menus, int day) {
-        eventResult = checkEvent(menus, day);
+        eventResult = createEventResult(menus, day);
         return eventResult.calculateTotalBenefit();
     }
 
