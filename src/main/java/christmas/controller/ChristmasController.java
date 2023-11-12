@@ -18,11 +18,14 @@ public class ChristmasController {
     }
 
     public void start() {
-        try {
-            day = Integer.parseInt(InputView.readVisitDay());
-            menus = planner.isContainMenu(InputView.readMenus());
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+        while (true) {
+            try {
+                day = Integer.parseInt(InputView.readVisitDay());
+                menus = planner.isContainMenu(InputView.readMenus());
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
         OutputView.printStartBenefitMessage(day);
         OutputView.printMenus(menus.getMenus());

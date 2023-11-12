@@ -18,4 +18,13 @@ public class InputViewTest {
         assertThatThrownBy(() -> InputView.validateInRange(input)).isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @DisplayName("방문할 날짜가 숫자가 아닌 값이 들어왔을 경우 예외 발생 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "a", "c", "d", "e"})
+    void validateIsInteger_IsNotInteger_ExceptionThrow(String input) {
+        assertThatThrownBy(() -> InputView.validateIsInteger(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }

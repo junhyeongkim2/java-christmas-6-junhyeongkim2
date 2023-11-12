@@ -8,7 +8,10 @@ public class InputView {
     public static String readVisitDay() {
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
         System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-        return Console.readLine();
+        String input = Console.readLine();
+        validateIsInteger(input);
+        validateInRange(input);
+        return input;
     }
 
     public static String readMenus() {
@@ -23,4 +26,15 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
     }
+
+    public static void validateIsInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        }
+
+    }
+
+
 }
