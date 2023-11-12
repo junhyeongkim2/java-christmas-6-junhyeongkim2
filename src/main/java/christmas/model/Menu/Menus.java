@@ -1,11 +1,7 @@
 package christmas.model.Menu;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Menus {
 
@@ -16,7 +12,7 @@ public class Menus {
     }
 
 
-    public static Menus of(Map<Menu, Integer> menus) {
+    public static Menus from(Map<Menu, Integer> menus) {
 
         Arrays.stream(Menu.values()).forEach(menu -> menus.putIfAbsent(menu, 0));
 

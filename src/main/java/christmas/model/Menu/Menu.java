@@ -56,7 +56,7 @@ public enum Menu {
             orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                     Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
         }
-        return Menus.of(orderedMenu);
+        return Menus.from(orderedMenu);
     }
 
     public int getPrice() {
