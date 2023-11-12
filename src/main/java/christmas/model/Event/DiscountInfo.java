@@ -2,8 +2,8 @@ package christmas.model.Event;
 
 public class DiscountInfo {
 
-    private String name;
-    private long discount;
+    private final String name;
+    private final long discount;
 
     public DiscountInfo(String name, long discount) {
         this.name = name;

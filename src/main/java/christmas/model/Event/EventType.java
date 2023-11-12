@@ -11,7 +11,7 @@ public enum EventType {
     GIVEAWAY("증정 이벤트", Menu.샴페인.getPrice());
 
     private final String name;
-    private int discount;
+    private final int discount;
 
     EventType(String name, int discount) {
         this.name = name;
