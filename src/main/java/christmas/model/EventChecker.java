@@ -10,10 +10,22 @@ public class EventChecker {
 
 
     public EventResult createEventResult(Menus menus, int day) {
+        if (menus.totalOrderAmount() >= 10000) {
+            return createContainedEventResult(menus, day);
+        }
+        return createEmptyEventResult();
+    }
+
+    public EventResult createContainedEventResult(Menus menus, int day) {
         return EventResult.createFrom(
                 List.of(checkDdayDiscount(day), checkWeekdayDiscount(menus, day), checkWeekendDiscount(menus, day),
                         checkSpecialDiscount(day), checkGiveawayMenu(menus, day)));
     }
+
+    public EventResult createEmptyEventResult() {
+        return EventResult.createFrom(List.of());
+    }
+
 
     public long calculateTotalBenefitAmount(Menus menus, int day) {
         eventResult = createEventResult(menus, day);
