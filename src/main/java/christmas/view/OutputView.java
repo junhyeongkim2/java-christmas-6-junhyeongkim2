@@ -77,6 +77,10 @@ public class OutputView {
         return df.format(amount);
     }
 
+    public static void printErrorMessage(IllegalArgumentException e) {
+        System.out.println(e.getMessage());
+    }
+
 
 }
 

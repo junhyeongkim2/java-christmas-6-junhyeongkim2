@@ -1,6 +1,12 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.model.Menu.Menu;
+import christmas.model.Menu.Menus;
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 
 public class InputView {
@@ -13,16 +19,48 @@ public class InputView {
             validateInRange(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return readVisitDay();
+            readVisitDay();
         }
         return input;
     }
 
-    public static String readMenus() {
+    public static Map<Menu, Integer> readMenus() {
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
-        return Console.readLine();
+        return splitMenuAndCount(splitMenuWithComma(Console.readLine()));
     }
 
+
+    public static String[] splitMenuWithComma(String menuInput) {
+        return menuInput.split(",");
+    }
+
+    public static String[] splitMenuWithHypen(String menuInput) {
+        return menuInput.split("-");
+    }
+
+    public static Map<Menu, Integer> splitMenuAndCount(String[] splitMenuWithComma) {
+        Map<Menu, Integer> orderedMenu = new EnumMap(Menu.class);
+        try {
+            for (String splitMenu : splitMenuWithComma) {
+                String[] menuAndCount = splitMenuWithHypen(splitMenu);
+                validateIsContainMenu(menuAndCount[0]);
+                orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
+                        Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
+            }
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
+            readMenus();
+        }
+
+        return orderedMenu;
+    }
+
+    public static void validateIsContainMenu(String menu) {
+        Boolean find = Arrays.stream(Menu.values()).map(Menu::getName).collect(Collectors.toList()).contains(menu);
+        if (find == false) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
 
     public static void validateInRange(String input) {
         int day = Integer.parseInt(input);

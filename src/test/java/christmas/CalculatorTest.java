@@ -4,6 +4,8 @@ import christmas.model.Calculator;
 import christmas.model.EventChecker;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
+import christmas.model.Planner;
+import christmas.view.InputView;
 import christmas.view.OutputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +20,9 @@ public class CalculatorTest {
     void calculateTotalOrderAmount_EqualResult_Success() {
         //given
         Calculator calculator = new Calculator();
-        Menus menus = Menu.createMenusFrom("초코케이크-1,바비큐립-1,샴페인-1");
+        Planner planner = new Planner();
+        Menus menus = planner.isContainMenu(
+                InputView.splitMenuAndCount(InputView.splitMenuWithComma("초코케이크-1,바비큐립-1,샴페인-1")));
         //when
         long totalOrderAmount = calculator.calculateTotalOrderAmount(menus);
         //then
@@ -31,7 +35,9 @@ public class CalculatorTest {
     void calculateTotalOrderAmount_DifferentResult_Fail() {
         //given
         Calculator calculator = new Calculator();
-        Menus menus = Menu.createMenusFrom("초코케이크-5,바비큐립-1,샴페인-1");
+        Planner planner = new Planner();
+        Menus menus = planner.isContainMenu(
+                InputView.splitMenuAndCount(InputView.splitMenuWithComma("초코케이크-5,바비큐립-1,샴페인-1")));
         //when
         long totalOrderAmount = calculator.calculateTotalOrderAmount(menus);
         //then
@@ -46,7 +52,9 @@ public class CalculatorTest {
     void calculateTotalBenefitAmount_WeekdayEqualResult_Success() {
         //given
         Calculator calculator = new Calculator();
-        Menus menus = Menu.createMenusFrom("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        Planner planner = new Planner();
+        Menus menus = planner.isContainMenu(
+                InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
         EventChecker eventChecker = new EventChecker();
         eventChecker.checkEvent(menus, 3);
 
@@ -64,7 +72,9 @@ public class CalculatorTest {
     void calculateTotalBenefitAmount_WeekendEqualResult_Success() {
         //given
         Calculator calculator = new Calculator();
-        Menus menus = Menu.createMenusFrom("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        Planner planner = new Planner();
+        Menus menus = planner.isContainMenu(
+                InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
 
         //when
         long result = calculator.calculateTotalBenefitAmount(menus, 16);

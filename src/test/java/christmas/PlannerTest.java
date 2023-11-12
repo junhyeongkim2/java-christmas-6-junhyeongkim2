@@ -6,6 +6,7 @@ import christmas.model.Event.EventType;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
+import christmas.view.InputView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,8 @@ public class PlannerTest {
     @BeforeEach
     void setUp() {
         planner = new Planner();
-        menus = planner.isContainMenu("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        menus = planner.isContainMenu(
+                InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
     }
 
     @DisplayName("메뉴 확인 정상 작동 테스트")
@@ -56,7 +58,7 @@ public class PlannerTest {
         long result = 0;
         //when
         planner.requestTotalOrderAmount(menus);
-        DiscountInfo discountInfo = planner.requestGiveawayMenuResult(menus,6);
+        DiscountInfo discountInfo = planner.requestGiveawayMenuResult(menus, 6);
         //then
         assertThat(discountInfo.getDiscount()).isEqualTo(1000);
     }

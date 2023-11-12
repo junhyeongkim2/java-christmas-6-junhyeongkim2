@@ -3,6 +3,7 @@ package christmas.model;
 import christmas.model.Event.DiscountInfo;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
+import java.util.Map;
 
 public class Planner {
 
@@ -12,8 +13,8 @@ public class Planner {
         this.calculator = new Calculator();
     }
 
-    public Menus isContainMenu(String menuInput) {
-        return Menu.createMenusFrom(menuInput);
+    public Menus isContainMenu(Map<Menu, Integer> orderedMenu) {
+        return Menus.from(orderedMenu);
     }
 
     public long requestTotalOrderAmount(Menus menus) {
