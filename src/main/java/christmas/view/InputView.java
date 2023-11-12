@@ -58,12 +58,19 @@ public class InputView {
             validateIsContainMenu(menuAndCount[0]);
             validateIsUnderTwentyMenu(menuCount);
             validateIsOverOneMenu(Integer.parseInt(menuAndCount[1]));
+            validateDuplicatedMenu(orderedMenu, Menu.valueOf(menuAndCount[0]));
             menuCount += Integer.parseInt(menuAndCount[1]);
             orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                     Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
         }
 
         return orderedMenu;
+    }
+
+    public static void validateDuplicatedMenu(Map<Menu, Integer> orderedMenu, Menu menu) {
+        if (orderedMenu.get(menu) != null) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
     }
 
     public static void validateIsContainMenu(String menu) {
