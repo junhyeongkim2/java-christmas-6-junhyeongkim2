@@ -40,11 +40,13 @@ public class InputView {
 
     public static Map<Menu, Integer> splitMenuAndCount(String[] splitMenuWithComma) {
         Map<Menu, Integer> orderedMenu = new EnumMap(Menu.class);
+        int menuCount = 0;
         try {
             for (String splitMenu : splitMenuWithComma) {
                 String[] menuAndCount = splitMenuWithHypen(splitMenu);
+                menuCount += Integer.parseInt(menuAndCount[1]);
                 validateIsContainMenu(menuAndCount[0]);
-                validateIsUnderTwentyMenu(Integer.parseInt(menuAndCount[1]));
+                validateIsUnderTwentyMenu(menuCount);
                 orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                         Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
             }
@@ -63,8 +65,8 @@ public class InputView {
         }
     }
 
-    public static void validateIsUnderTwentyMenu(int count){
-        if(count>20){
+    public static void validateIsUnderTwentyMenu(int count) {
+        if (count > 20) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }
