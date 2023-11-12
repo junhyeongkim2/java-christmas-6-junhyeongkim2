@@ -19,7 +19,7 @@ public class InputView {
             validateInRange(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            readVisitDay();
+            return readVisitDay();
         }
         return input;
     }
@@ -44,16 +44,17 @@ public class InputView {
         try {
             for (String splitMenu : splitMenuWithComma) {
                 String[] menuAndCount = splitMenuWithHypen(splitMenu);
-                menuCount += Integer.parseInt(menuAndCount[1]);
+                validateIsIntegerMenuCount(menuAndCount[1]);
                 validateIsContainMenu(menuAndCount[0]);
                 validateIsUnderTwentyMenu(menuCount);
                 validateIsOverOneMenu(Integer.parseInt(menuAndCount[1]));
+                menuCount += Integer.parseInt(menuAndCount[1]);
                 orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                         Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
             }
         } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e);
-            readMenus();
+            System.out.println(e.getMessage());
+            return readMenus();
         }
 
         return orderedMenu;
@@ -78,6 +79,15 @@ public class InputView {
         }
     }
 
+    public static void validateIsIntegerMenuCount(String count) {
+        try {
+            Integer.parseInt(count);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
+
+
     public static void validateInRange(String input) {
         int day = Integer.parseInt(input);
         if (day < 1 || day > 31) {
@@ -91,7 +101,6 @@ public class InputView {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
-
     }
 
 
