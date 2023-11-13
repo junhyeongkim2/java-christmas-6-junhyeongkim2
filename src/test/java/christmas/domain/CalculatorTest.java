@@ -1,4 +1,4 @@
-package christmas;
+package christmas.domain;
 
 import christmas.model.Calculator;
 import christmas.model.EventChecker;

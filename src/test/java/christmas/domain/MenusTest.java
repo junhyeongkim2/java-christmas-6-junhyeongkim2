@@ -1,4 +1,4 @@
-package christmas;
+package christmas.domain;
 
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;

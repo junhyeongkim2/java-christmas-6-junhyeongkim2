@@ -1,4 +1,4 @@
-package christmas;
+package christmas.view;
 
 import christmas.model.Planner;
 import christmas.view.InputView;

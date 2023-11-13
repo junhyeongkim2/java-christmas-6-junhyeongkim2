@@ -1,4 +1,4 @@
-package christmas;
+package christmas.domain;
 
 import christmas.model.DiscountEvent;
 import christmas.model.Event.EventType;
