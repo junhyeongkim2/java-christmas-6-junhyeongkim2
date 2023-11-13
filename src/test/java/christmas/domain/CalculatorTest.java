@@ -17,7 +17,6 @@ public class CalculatorTest {
 
     private Calculator calculator;
     private Planner planner;
-
     private Menus menus;
 
     @BeforeEach
@@ -60,11 +59,10 @@ public class CalculatorTest {
         //given
         menus = planner.isContainMenu(
                 InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
-        EventChecker eventChecker = new EventChecker();
-        eventChecker.createEventResult(menus, 3);
-
+        long result = 0;
         //when
-        long result = calculator.calculateTotalBenefitAmount(menus, 3);
+        calculator.calculateEventResult(menus, 3);
+        result = calculator.calculateTotalBenefitAmount();
 
         //then
         assertThat(result).isEqualTo(-31246);
@@ -78,13 +76,44 @@ public class CalculatorTest {
         //given
         menus = planner.isContainMenu(
                 InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
-
+        long result = 0;
         //when
-        long result = calculator.calculateTotalBenefitAmount(menus, 16);
+        calculator.calculateEventResult(menus, 3);
+        result = calculator.calculateTotalBenefitAmount();
 
         //then
-        assertThat(result).isEqualTo(-31546);
+        assertThat(result).isEqualTo(-31246);
 
+    }
+
+    @DisplayName("할인 후 예상 결제 금액 계산 평일 성공 테스트")
+    @Test
+    void calculateExpectedPaymentAmount_EqualResultWeekDay_Success() {
+        //given
+        menus = planner.isContainMenu(
+                InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
+        long result = 0;
+        //when
+        calculator.calculateTotalOrderAmount(menus);
+        calculator.calculateEventResult(menus, 3);
+        result = calculator.calculateExpectedPaymentAmount();
+        //then
+        assertThat(result).isEqualTo(142000 + (-31246 + 25000));
+    }
+
+    @DisplayName("할인 후 예상 결제 금액 계산 주말 성공 테스트")
+    @Test
+    void calculateExpectedPaymentAmount_EqualResultWeekEnd_Success() {
+        //given
+        menus = planner.isContainMenu(
+                InputView.splitMenuAndCount(InputView.splitMenuWithComma("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1")));
+        long result = 0;
+        //when
+        calculator.calculateTotalOrderAmount(menus);
+        calculator.calculateEventResult(menus, 8);
+        result = calculator.calculateExpectedPaymentAmount();
+        //then
+        assertThat(result).isEqualTo(136254);
     }
 
 

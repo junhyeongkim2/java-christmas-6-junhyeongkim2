@@ -29,8 +29,8 @@ public class Planner {
         return calculator.calculateEventResult(menus, day);
     }
 
-    public long requestTotalBenefitAmount(Menus menus, int day) {
-        return calculator.calculateTotalBenefitAmount(menus, day);
+    public long requestTotalBenefitAmount() {
+        return calculator.calculateTotalBenefitAmount();
     }
 
     public long requestExpectedPaymentAmount() {

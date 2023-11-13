@@ -87,7 +87,7 @@ public class PlannerTest {
         EventResult eventResult;
         //when
         eventResult = planner.requestEventResult(menus, 6);
-        long totalBenefitAmount = planner.requestTotalBenefitAmount(menus, 6);
+        long totalBenefitAmount = planner.requestTotalBenefitAmount();
         //then
         assertThat(totalBenefitAmount).isEqualTo(30546);
     }
@@ -99,7 +99,7 @@ public class PlannerTest {
         //when
         planner.requestTotalOrderAmount(menus);
         planner.requestEventResult(menus, 6);
-        planner.requestTotalBenefitAmount(menus, 6);
+        planner.requestTotalBenefitAmount();
         long expectedPaymentAmount = planner.requestExpectedPaymentAmount();
         //then
         assertThat(expectedPaymentAmount).isEqualTo(136454);
@@ -113,7 +113,7 @@ public class PlannerTest {
         EventResult eventResult;
         //when
         eventResult = planner.requestEventResult(menus, 6);
-        planner.requestTotalBenefitAmount(menus, 6);
+        planner.requestTotalBenefitAmount();
         Badge badge = planner.requestBadge();
 
         //then

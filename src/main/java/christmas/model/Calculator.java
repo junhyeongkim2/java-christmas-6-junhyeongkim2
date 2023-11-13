@@ -27,8 +27,8 @@ public class Calculator {
         return eventChecker.createEventResult(menus, day);
     }
 
-    public long calculateTotalBenefitAmount(Menus menus, int day) {
-        return eventChecker.checkTotalBenefitAmount(menus, day);
+    public long calculateTotalBenefitAmount() {
+        return eventChecker.checkTotalBenefitAmount();
     }
 
     public long calculateExpectedPaymentAmount() {

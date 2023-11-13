@@ -17,18 +17,19 @@ public class EventChecker {
     }
 
     public EventResult createContainedEventResult(Menus menus, int day) {
-        return EventResult.createFrom(
+        eventResult = EventResult.createFrom(
                 List.of(checkDdayDiscount(day), checkWeekdayDiscount(menus, day), checkWeekendDiscount(menus, day),
                         checkSpecialDiscount(day), checkGiveawayMenu(menus, day)));
+        return eventResult;
     }
 
     public EventResult createEmptyEventResult() {
-        return EventResult.createFrom(List.of());
+        eventResult = EventResult.createFrom(List.of());
+        return eventResult;
     }
 
 
-    public long checkTotalBenefitAmount(Menus menus, int day) {
-        eventResult = createEventResult(menus, day);
+    public long checkTotalBenefitAmount() {
         return eventResult.calculateTotalBenefit();
     }
 
