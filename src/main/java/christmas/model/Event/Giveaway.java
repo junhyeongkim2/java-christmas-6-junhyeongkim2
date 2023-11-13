@@ -1,7 +1,7 @@
 package christmas.model.Event;
 
 import christmas.model.DiscountEvent;
-import christmas.model.Menu.Menu;
+import christmas.model.DiscountInfo;
 import christmas.model.Menu.Menus;
 
 public class Giveaway extends DiscountEvent {

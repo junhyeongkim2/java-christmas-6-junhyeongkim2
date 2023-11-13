@@ -1,8 +1,7 @@
 package christmas.domain;
 
 import christmas.model.Badge;
-import christmas.model.Event.DiscountInfo;
-import christmas.model.Event.EventType;
+import christmas.model.DiscountInfo;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;

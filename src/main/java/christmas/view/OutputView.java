@@ -1,14 +1,11 @@
 package christmas.view;
 
 import christmas.model.Badge;
-import christmas.model.Event.DiscountInfo;
-import christmas.model.Event.EventType;
+import christmas.model.DiscountInfo;
 import christmas.model.Menu.Menu;
 import java.text.DecimalFormat;
-import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class OutputView {
     private static final DecimalFormat df = new DecimalFormat("###,###");

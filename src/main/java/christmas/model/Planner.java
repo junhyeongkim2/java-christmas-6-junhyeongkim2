@@ -1,6 +1,5 @@
 package christmas.model;
 
-import christmas.model.Event.DiscountInfo;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 import java.util.Map;

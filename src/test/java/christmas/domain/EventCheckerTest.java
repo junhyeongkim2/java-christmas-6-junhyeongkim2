@@ -1,15 +1,11 @@
 package christmas;
 
-import christmas.model.Calculator;
-import christmas.model.DiscountEvent;
-import christmas.model.Event.DiscountInfo;
+import christmas.model.DiscountInfo;
 import christmas.model.Event.EventType;
 import christmas.model.EventChecker;
-import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
 import christmas.view.InputView;
-import jdk.jfr.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

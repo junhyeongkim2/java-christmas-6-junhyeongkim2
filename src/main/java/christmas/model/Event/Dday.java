@@ -1,6 +1,7 @@
 package christmas.model.Event;
 
 import christmas.model.DiscountEvent;
+import christmas.model.DiscountInfo;
 import christmas.model.Menu.Menus;
 
 public class Dday extends DiscountEvent {

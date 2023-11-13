@@ -1,8 +1,6 @@
 package christmas.model;
 
 import christmas.model.Event.Dday;
-import christmas.model.Event.DiscountInfo;
-import christmas.model.Event.EventType;
 import christmas.model.Event.Giveaway;
 import christmas.model.Event.Special;
 import christmas.model.Event.Weekday;

@@ -1,4 +1,4 @@
-package christmas.model.Event;
+package christmas.model;
 
 public class DiscountInfo {
 

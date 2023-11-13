@@ -2,7 +2,7 @@ package christmas.domain;
 
 import christmas.model.Badge;
 import christmas.model.Calculator;
-import christmas.model.Event.DiscountInfo;
+import christmas.model.DiscountInfo;
 import christmas.model.EventChecker;
 import christmas.model.EventResult;
 import christmas.model.Menu.Menus;
