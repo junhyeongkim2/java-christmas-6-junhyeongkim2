@@ -5,13 +5,9 @@ import christmas.model.Menu.Menus;
 
 public class Dday extends DiscountEvent {
 
-    @Override
-    protected DiscountInfo calculateDiscountAmount(Menus menus, int day) {
-        return null;
-    }
 
     @Override
-    protected DiscountInfo calculateDiscountAmount(int day) {
+    protected DiscountInfo calculateDiscountAmount(Menus menus, int day) {
         if (day > 25) {
             return new DiscountInfo(EventType.DDAY.getName(), 0);
         }

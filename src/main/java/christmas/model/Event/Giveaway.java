@@ -15,10 +15,5 @@ public class Giveaway extends DiscountEvent {
         return new DiscountInfo(EventType.GIVEAWAY.getName(), 0);
     }
 
-    @Override
-    protected DiscountInfo calculateDiscountAmount(int day) {
-        return null;
-    }
-
 
 }

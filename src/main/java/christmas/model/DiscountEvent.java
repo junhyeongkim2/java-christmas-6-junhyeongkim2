@@ -34,7 +34,5 @@ public abstract class DiscountEvent {
 
     abstract protected DiscountInfo calculateDiscountAmount(Menus menus, int day);
 
-    abstract protected DiscountInfo calculateDiscountAmount(int day);
-
 
 }

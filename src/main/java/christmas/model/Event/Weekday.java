@@ -14,10 +14,4 @@ public class Weekday extends DiscountEvent {
         return new DiscountInfo(EventType.WEEKDAY.getName(), 0);
     }
 
-    @Override
-    protected DiscountInfo calculateDiscountAmount(int day) {
-        return null;
-    }
-
-
 }

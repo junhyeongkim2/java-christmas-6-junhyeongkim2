@@ -9,11 +9,6 @@ public class Special extends DiscountEvent {
 
     @Override
     protected DiscountInfo calculateDiscountAmount(Menus menus, int day) {
-        return null;
-    }
-
-    @Override
-    protected DiscountInfo calculateDiscountAmount(int day) {
         if (specialDay.contains(day)) {
             return new DiscountInfo(EventType.SPECIAL.getName(), -EventType.SPECIAL.getDiscount());
         }

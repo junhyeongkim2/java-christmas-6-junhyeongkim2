@@ -8,7 +8,6 @@ public class EventChecker {
 
     private EventResult eventResult;
 
-
     public EventResult createEventResult(Menus menus, int day) {
         if (menus.totalOrderAmount() >= 10000) {
             return createContainedEventResult(menus, day);
@@ -18,8 +17,8 @@ public class EventChecker {
 
     public EventResult createContainedEventResult(Menus menus, int day) {
         eventResult = EventResult.createFrom(
-                List.of(checkDdayDiscount(day), checkWeekdayDiscount(menus, day), checkWeekendDiscount(menus, day),
-                        checkSpecialDiscount(day), checkGiveawayMenu(menus, day)));
+                List.of(checkDdayDiscount(menus, day), checkWeekdayDiscount(menus, day), checkWeekendDiscount(menus, day),
+                        checkSpecialDiscount(menus, day), checkGiveawayMenu(menus, day)));
         return eventResult;
     }
 
@@ -37,8 +36,8 @@ public class EventChecker {
         return eventResult.calculateExpectedPaymentAmount(totalOrderAmount);
     }
 
-    public DiscountInfo checkDdayDiscount(int day) {
-        return DiscountEvent.Dday().calculateDiscountAmount(day);
+    public DiscountInfo checkDdayDiscount(Menus menus, int day) {
+        return DiscountEvent.Dday().calculateDiscountAmount(menus, day);
     }
 
     public DiscountInfo checkWeekdayDiscount(Menus menus, int day) {
@@ -50,8 +49,8 @@ public class EventChecker {
     }
 
 
-    public DiscountInfo checkSpecialDiscount(int day) {
-        return DiscountEvent.Special().calculateDiscountAmount(day);
+    public DiscountInfo checkSpecialDiscount(Menus menus, int day) {
+        return DiscountEvent.Special().calculateDiscountAmount(menus, day);
     }
 
     public DiscountInfo checkGiveawayMenu(Menus menus, int day) {
