@@ -16,13 +16,13 @@ public enum Badge {
     }
 
     public static Badge valueOf(long totalBenefitAmount) {
-        if (totalBenefitAmount >= Badge.별.price && totalBenefitAmount < Badge.트리.price) {
+        if (-totalBenefitAmount >= Badge.별.price && -totalBenefitAmount < Badge.트리.price) {
             return Badge.별;
         }
-        if (totalBenefitAmount >= Badge.트리.price && totalBenefitAmount < Badge.산타.price) {
+        if (-totalBenefitAmount >= Badge.트리.price && -totalBenefitAmount < Badge.산타.price) {
             return Badge.트리;
         }
-        if (totalBenefitAmount >= Badge.산타.price) {
+        if (-totalBenefitAmount >= Badge.산타.price) {
             return Badge.산타;
         }
         return Badge.없음;
