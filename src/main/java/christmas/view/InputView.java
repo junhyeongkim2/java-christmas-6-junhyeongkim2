@@ -2,13 +2,12 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.model.Menu.Menu;
-import christmas.model.Menu.Menus;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 
 public class InputView {
 
@@ -63,8 +62,15 @@ public class InputView {
             orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                     Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
         }
+        validateIsDrinkOnlyMenu(orderedMenu.keySet());
 
         return orderedMenu;
+    }
+
+    public static void validateIsDrinkOnlyMenu(Set<Menu> keySet) {
+        if (keySet.stream().filter(key -> key.getCategory().equals("음료")).count() == keySet.size()) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
     }
 
     public static void validateDuplicatedMenu(Map<Menu, Integer> orderedMenu, Menu menu) {
