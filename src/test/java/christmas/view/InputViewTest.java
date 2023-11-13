@@ -102,5 +102,15 @@ public class InputViewTest {
                 IllegalArgumentException.class);
     }
 
+    @DisplayName("메뉴 중복 시 예외 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"타파스-1,타파스-1","티본스테이크-1,제로콜라-1,티본스테이크-1","제로콜라-1,제로콜라-1,타파스-1"})
+    void validateMenuForm_IsDuplicatedMenu_ExceptionThrow(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> InputView.splitMenuAndCount(InputView.splitMenuWithComma(input))).isInstanceOf(
+                IllegalArgumentException.class);
+    }
+
 
 }

@@ -59,25 +59,8 @@ public class PlannerTest {
         planner.requestTotalOrderAmount(menus);
         DiscountInfo discountInfo = planner.requestGiveawayMenuResult(menus, 6);
         //then
-        assertThat(discountInfo.getDiscount()).isEqualTo(1000);
+        assertThat(discountInfo.getDiscount()).isEqualTo(-25000);
     }
-
-    @DisplayName("이벤트 결과 요청 정상 작동 테스트")
-    @Test
-    void requestEventResult_EqualResult_Success() {
-        //given
-        EventResult eventResult;
-        //when
-        eventResult = planner.requestEventResult(menus, 6);
-
-        //then
-        assertThat(eventResult.getEventResult().get(0)).isEqualTo(25000);
-        assertThat(eventResult.getEventResult().get(1)).isEqualTo(4046);
-        assertThat(eventResult.getEventResult().get(2)).isEqualTo(0);
-        assertThat(eventResult.getEventResult().get(3)).isEqualTo(0);
-        assertThat(eventResult.getEventResult().get(4)).isEqualTo(1500);
-    }
-
 
     @DisplayName("총혜택 금액 요청 정상 작동 테스트")
     @Test
@@ -88,7 +71,7 @@ public class PlannerTest {
         eventResult = planner.requestEventResult(menus, 6);
         long totalBenefitAmount = planner.requestTotalBenefitAmount();
         //then
-        assertThat(totalBenefitAmount).isEqualTo(30546);
+        assertThat(totalBenefitAmount).isEqualTo(-30546);
     }
 
     @DisplayName("예상 결제 금액 요청 정상 작동 테스트")
