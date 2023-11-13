@@ -35,6 +35,7 @@ public class InputView {
             System.out.println(e.getMessage());
             return readMenus();
         }
+
         return menus;
     }
 
@@ -53,18 +54,26 @@ public class InputView {
 
         for (String splitMenu : splitMenuWithComma) {
             String[] menuAndCount = splitMenuWithHypen(splitMenu);
+            validateSplit(menuAndCount);
             validateIsIntegerMenuCount(menuAndCount[1]);
             validateIsContainMenu(menuAndCount[0]);
-            validateIsUnderTwentyMenu(menuCount);
             validateIsOverOneMenu(Integer.parseInt(menuAndCount[1]));
             validateDuplicatedMenu(orderedMenu, Menu.valueOf(menuAndCount[0]));
             menuCount += Integer.parseInt(menuAndCount[1]);
+            validateIsUnderTwentyMenu(menuCount);
             orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                     Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
         }
         validateIsDrinkOnlyMenu(orderedMenu.keySet());
 
         return orderedMenu;
+    }
+
+    public static void validateSplit(String[] menuAndcount) {
+        if (menuAndcount.length != 2) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+
     }
 
     public static void validateIsDrinkOnlyMenu(Set<Menu> keySet) {
