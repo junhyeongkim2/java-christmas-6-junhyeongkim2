@@ -36,11 +36,6 @@ public class EventChecker {
         return eventResult.calculateExpectedPaymentAmount(totalOrderAmount);
     }
 
-    public List<DiscountInfo> checkEventResult() {
-        return eventResult.getEventResult();
-    }
-
-
     public DiscountInfo checkDdayDiscount(int day) {
         return DiscountEvent.Dday().calculateDiscountAmount(day);
     }

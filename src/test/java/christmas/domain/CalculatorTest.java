@@ -67,7 +67,7 @@ public class CalculatorTest {
         long result = calculator.calculateTotalBenefitAmount(menus, 3);
 
         //then
-        assertThat(result).isEqualTo(31246);
+        assertThat(result).isEqualTo(-31246);
 
     }
 
@@ -83,7 +83,7 @@ public class CalculatorTest {
         long result = calculator.calculateTotalBenefitAmount(menus, 16);
 
         //then
-        assertThat(result).isEqualTo(31546);
+        assertThat(result).isEqualTo(-31546);
 
     }
 
