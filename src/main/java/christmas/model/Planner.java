@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Planner {
 
-    Calculator calculator;
+    private Calculator calculator;
 
     public Planner() {
         this.calculator = new Calculator();

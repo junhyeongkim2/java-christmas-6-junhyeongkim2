@@ -28,11 +28,11 @@ public class Calculator {
     }
 
     public long calculateTotalBenefitAmount(Menus menus, int day) {
-        return eventChecker.calculateTotalBenefitAmount(menus, day);
+        return eventChecker.checkTotalBenefitAmount(menus, day);
     }
 
     public long calculateExpectedPaymentAmount() {
-        return eventChecker.calculateExpectedPaymentAmount(totalOrderAmount);
+        return eventChecker.checkExpectedPaymentAmount(totalOrderAmount);
     }
 
     public Badge calculateEventBadge() {

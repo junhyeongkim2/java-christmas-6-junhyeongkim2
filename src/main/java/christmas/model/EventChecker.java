@@ -27,12 +27,12 @@ public class EventChecker {
     }
 
 
-    public long calculateTotalBenefitAmount(Menus menus, int day) {
+    public long checkTotalBenefitAmount(Menus menus, int day) {
         eventResult = createEventResult(menus, day);
         return eventResult.calculateTotalBenefit();
     }
 
-    public long calculateExpectedPaymentAmount(long totalOrderAmount) {
+    public long checkExpectedPaymentAmount(long totalOrderAmount) {
         return eventResult.calculateExpectedPaymentAmount(totalOrderAmount);
     }
 
