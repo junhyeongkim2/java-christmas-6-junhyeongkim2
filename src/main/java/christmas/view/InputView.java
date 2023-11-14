@@ -16,7 +16,6 @@ public class InputView {
     private static final String READ_MENUS_MESSAGE = "주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)";
     private static final String INVALID_ORDER_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private static final String INVALID_VISITDAY_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
-    private static final String DRINK_CATEGORY = "음료";
     private static final int MENU = 0;
     private static final int COUNT = 1;
     private static final int MAX_MENU_COUNT = 20;
@@ -106,7 +105,7 @@ public class InputView {
     }
 
     public static void validateIsDrinkOnlyMenu(Set<Menu> keySet) {
-        if (keySet.stream().filter(key -> key.getCategory().equals(DRINK_CATEGORY)).count() == keySet.size()) {
+        if (keySet.stream().filter(key -> key.getCategory().equals(Menu.DRINK_CATEGORY)).count() == keySet.size()) {
             throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
         }
     }

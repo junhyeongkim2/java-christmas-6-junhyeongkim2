@@ -3,6 +3,7 @@ package christmas.model.Menu;
 
 public enum Menu {
 
+
     양송이수프("양송이수프", "에피타이저", 6000),
     타파스("타파스", "에피타이저", 5500),
     시저샐러드("시저샐러드", "에피타이저", 8000),
@@ -19,6 +20,11 @@ public enum Menu {
     private final String name;
     private final String category;
     private final int price;
+
+    public static final String DRINK_CATEGORY = "음료";
+
+    public static final String MAIN_CATEGORY = "메인";
+    public static final String DESSERT_CATEGORY = "디저트";
 
     Menu(String name, String category, int price) {
         this.name = name;
