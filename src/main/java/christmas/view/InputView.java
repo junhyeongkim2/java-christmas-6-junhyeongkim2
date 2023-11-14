@@ -15,28 +15,33 @@ public class InputView {
 
     public static String readVisitDay() {
         System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-        String input = Console.readLine();
+        return repeatReadVisitDay();
+    }
+
+    private static String repeatReadVisitDay() {
         try {
+            String input = Console.readLine();
             validateIsInteger(input);
             validateInRange(input);
+            return input;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return readVisitDay();
         }
-        return input;
     }
 
     public static Map<Menu, Integer> readMenus() {
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
-        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
+        return repeatReadMenus();
+    }
+
+    private static Map<Menu, Integer> repeatReadMenus() {
         try {
-            menus = splitMenuAndCount(splitMenuWithComma(validateMenuForm(Console.readLine())));
+            return splitMenuAndCount(splitMenuWithComma(validateMenuForm(Console.readLine())));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return readMenus();
         }
-
-        return menus;
     }
 
 
@@ -50,23 +55,35 @@ public class InputView {
 
     public static Map<Menu, Integer> splitMenuAndCount(String[] splitMenuWithComma) {
         Map<Menu, Integer> orderedMenu = new EnumMap(Menu.class);
-        int menuCount = 0;
+        validateSplitMenu(splitMenuWithComma, orderedMenu);
+        validateIsDrinkOnlyMenu(orderedMenu.keySet());
+        validateIsUnderTwentyMenu(orderedMenu);
+        return orderedMenu;
+    }
 
+    private static void validateSplitMenu(String[] splitMenuWithComma, Map<Menu, Integer> orderedMenu) {
         for (String splitMenu : splitMenuWithComma) {
             String[] menuAndCount = splitMenuWithHypen(splitMenu);
-            validateSplit(menuAndCount);
-            validateIsIntegerMenuCount(menuAndCount[1]);
-            validateIsContainMenu(menuAndCount[0]);
-            validateIsOverOneMenu(Integer.parseInt(menuAndCount[1]));
-            validateDuplicatedMenu(orderedMenu, Menu.valueOf(menuAndCount[0]));
-            menuCount += Integer.parseInt(menuAndCount[1]);
-            validateIsUnderTwentyMenu(menuCount);
+            validateMenuAndCount(splitMenuWithHypen(splitMenu), orderedMenu);
             orderedMenu.putIfAbsent(Menu.valueOf(menuAndCount[0]),
                     Integer.parseInt(menuAndCount[1]) * Menu.valueOf(menuAndCount[0]).getPrice());
         }
-        validateIsDrinkOnlyMenu(orderedMenu.keySet());
+    }
 
-        return orderedMenu;
+    public static void validateIsUnderTwentyMenu(Map<Menu, Integer> orderedMenu) {
+        int menuCount = orderedMenu.keySet().stream()
+                .mapToInt(key -> orderedMenu.get(key) / Menu.valueOf(String.valueOf(key)).getPrice()).sum();
+        if (menuCount > 20) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
+
+    public static void validateMenuAndCount(String[] menuAndCount, Map<Menu, Integer> orderedMenu) {
+        validateSplit(menuAndCount);
+        validateIsIntegerMenuCount(menuAndCount[1]);
+        validateIsContainMenu(menuAndCount[0]);
+        validateIsOverOneMenu(Integer.parseInt(menuAndCount[1]));
+        validateDuplicatedMenu(orderedMenu, Menu.valueOf(menuAndCount[0]));
     }
 
     public static void validateSplit(String[] menuAndcount) {
@@ -91,12 +108,6 @@ public class InputView {
     public static void validateIsContainMenu(String menu) {
         Boolean find = Arrays.stream(Menu.values()).map(Menu::getName).collect(Collectors.toList()).contains(menu);
         if (find == false) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
-        }
-    }
-
-    public static void validateIsUnderTwentyMenu(int count) {
-        if (count > 20) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }

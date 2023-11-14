@@ -5,7 +5,6 @@ import christmas.model.Menu.Menus;
 public class Calculator {
 
     private EventChecker eventChecker;
-    private long totalOrderAmount;
 
 
     public Calculator() {
@@ -14,8 +13,7 @@ public class Calculator {
 
 
     public long calculateTotalOrderAmount(Menus menus) {
-        totalOrderAmount = menus.totalOrderAmount();
-        return totalOrderAmount;
+        return menus.totalOrderAmount();
     }
 
     public DiscountInfo calculateGiveawayMenu(Menus menus, int day) {
@@ -30,7 +28,7 @@ public class Calculator {
         return eventChecker.checkTotalBenefitAmount();
     }
 
-    public long calculateExpectedPaymentAmount() {
+    public long calculateExpectedPaymentAmount(long totalOrderAmount) {
         return eventChecker.checkExpectedPaymentAmount(totalOrderAmount);
     }
 

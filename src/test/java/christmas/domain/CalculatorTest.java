@@ -96,7 +96,7 @@ public class CalculatorTest {
         //when
         calculator.calculateTotalOrderAmount(menus);
         calculator.calculateEventResult(menus, 3);
-        result = calculator.calculateExpectedPaymentAmount();
+        result = calculator.calculateExpectedPaymentAmount(calculator.calculateTotalOrderAmount(menus));
         //then
         assertThat(result).isEqualTo(142000 + (-31246 + 25000));
     }
@@ -111,7 +111,7 @@ public class CalculatorTest {
         //when
         calculator.calculateTotalOrderAmount(menus);
         calculator.calculateEventResult(menus, 8);
-        result = calculator.calculateExpectedPaymentAmount();
+        result = calculator.calculateExpectedPaymentAmount(calculator.calculateTotalOrderAmount(menus));
         //then
         assertThat(result).isEqualTo(136254);
     }

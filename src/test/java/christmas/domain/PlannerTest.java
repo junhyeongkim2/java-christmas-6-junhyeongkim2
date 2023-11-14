@@ -79,10 +79,9 @@ public class PlannerTest {
     void requestExpectedPaymentAmount_EqualResult_Success() {
         //given
         //when
-        planner.requestTotalOrderAmount(menus);
         planner.requestEventResult(menus, 6);
         planner.requestTotalBenefitAmount();
-        long expectedPaymentAmount = planner.requestExpectedPaymentAmount();
+        long expectedPaymentAmount = planner.requestExpectedPaymentAmount(planner.requestTotalOrderAmount(menus));
         //then
         assertThat(expectedPaymentAmount).isEqualTo(136454);
     }

@@ -141,9 +141,9 @@ public class OutputViewTest {
         //when
         menus = planner.isContainMenu(
                 InputView.splitMenuAndCount(InputView.splitMenuWithComma("타파스-1,티본스테이크-1")));
-        planner.requestTotalOrderAmount(menus);
         planner.requestEventResult(menus, 6);
-        OutputView.printExpectedPaymentAmount(planner.requestExpectedPaymentAmount());
+        OutputView.printExpectedPaymentAmount(
+                planner.requestExpectedPaymentAmount(planner.requestTotalOrderAmount(menus)));
         //then
         assertThat(output.toString()).isEqualTo("<할인 후 예상 결제 금액>\n59,000원\n\n");
     }
