@@ -18,4 +18,13 @@ public class DiscountInfo {
         return this.discount;
     }
 
+    public Boolean isZeroDiscount(){
+        if(discount == 0){
+            return true;
+        }
+        return false;
+    }
+
+
+
 }

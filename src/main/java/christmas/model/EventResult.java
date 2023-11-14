@@ -18,7 +18,7 @@ public class EventResult {
 
     public static EventResult createFrom(List<DiscountInfo> eventResult) {
         List<DiscountInfo> results = eventResult.stream()
-                .filter(result -> result.getDiscount() != DiscountEvent.ZERO_DISCOUNT)
+                .filter(result -> result.isZeroDiscount() == false)
                 .collect(Collectors.toList());
         return new EventResult(results);
     }
