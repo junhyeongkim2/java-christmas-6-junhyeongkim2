@@ -8,10 +8,11 @@ public class Weekend extends DiscountEvent {
 
     @Override
     protected DiscountInfo calculateDiscountAmount(Menus menus, int day) {
-        if (day % 7 == 1 || day % 7 == 2) {
-            return new DiscountInfo(EventType.WEEKEND.getName(), -(menus.totalEventMatchAmount("메인") * 2023));
+        if (day % DiscountEvent.SEVENDAYS == DiscountEvent.WEEKEND_ONE
+                || day % DiscountEvent.SEVENDAYS == DiscountEvent.WEEKEND_TWO) {
+            return new DiscountInfo(EventType.WEEKEND.getName(), -(menus.totalEventMatchAmount("메인") * EventType.WEEKEND.getDiscount()));
         }
-        return new DiscountInfo(EventType.WEEKDAY.getName(), 0);
+        return new DiscountInfo(EventType.WEEKEND.getName(), DiscountEvent.ZERO_DISCOUNT);
     }
 
 

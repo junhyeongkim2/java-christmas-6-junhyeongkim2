@@ -6,13 +6,15 @@ import christmas.model.Menu.Menus;
 
 public class Weekday extends DiscountEvent {
 
+
     @Override
     protected DiscountInfo calculateDiscountAmount(Menus menus, int day) {
-        if (day % 7 != 1 && day % 7 != 2) {
+        if (day % DiscountEvent.SEVENDAYS != DiscountEvent.WEEKEND_ONE
+                && day % DiscountEvent.SEVENDAYS != DiscountEvent.WEEKEND_TWO) {
             return new DiscountInfo(EventType.WEEKDAY.getName(),
-                    menus.totalEventMatchAmount("디저트") * -EventType.WEEKEND.getDiscount());
+                    -menus.totalEventMatchAmount("디저트") * EventType.WEEKDAY.getDiscount());
         }
-        return new DiscountInfo(EventType.WEEKDAY.getName(), 0);
+        return new DiscountInfo(EventType.WEEKDAY.getName(), DiscountEvent.ZERO_DISCOUNT);
     }
 
 }

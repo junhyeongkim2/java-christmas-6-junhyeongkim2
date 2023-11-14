@@ -5,10 +5,11 @@ import java.util.List;
 
 public class EventChecker {
 
+    private static final int EVENT_CREATE_CONDITION = 10000;
     private EventResult eventResult;
 
     public EventResult createEventResult(Menus menus, int day) {
-        if (menus.totalOrderAmount() >= 10000) {
+        if (menus.totalOrderAmount() >= EVENT_CREATE_CONDITION) {
             return createContainedEventResult(menus, day);
         }
         return createEmptyEventResult();

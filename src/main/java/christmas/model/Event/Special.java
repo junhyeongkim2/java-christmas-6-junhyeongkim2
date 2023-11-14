@@ -13,7 +13,7 @@ public class Special extends DiscountEvent {
         if (specialDay.contains(day)) {
             return new DiscountInfo(EventType.SPECIAL.getName(), -EventType.SPECIAL.getDiscount());
         }
-        return new DiscountInfo(EventType.SPECIAL.getName(), 0);
+        return new DiscountInfo(EventType.SPECIAL.getName(), DiscountEvent.ZERO_DISCOUNT);
     }
 
 }

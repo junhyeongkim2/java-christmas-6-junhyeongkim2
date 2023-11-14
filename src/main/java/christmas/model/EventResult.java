@@ -8,6 +8,8 @@ public class EventResult {
 
     private final List<DiscountInfo> eventResult;
 
+    private static final String EVENT_NAME_GIVEAWAY = "증정 이벤트";
+
     private long totalBenefitAmount;
 
     public EventResult(List<DiscountInfo> eventResult) {
@@ -15,7 +17,8 @@ public class EventResult {
     }
 
     public static EventResult createFrom(List<DiscountInfo> eventResult) {
-        List<DiscountInfo> results = eventResult.stream().filter(result -> result.getDiscount() != 0)
+        List<DiscountInfo> results = eventResult.stream()
+                .filter(result -> result.getDiscount() != DiscountEvent.ZERO_DISCOUNT)
                 .collect(Collectors.toList());
         return new EventResult(results);
     }
@@ -32,7 +35,7 @@ public class EventResult {
 
 
     public long calculateExpectedPaymentAmount(long totalOrderAmount) {
-        return totalOrderAmount + eventResult.stream().filter(result -> result.getName() != "증정 이벤트")
+        return totalOrderAmount + eventResult.stream().filter(result -> result.getName() != EVENT_NAME_GIVEAWAY)
                 .mapToLong(DiscountInfo::getDiscount).sum();
     }
 

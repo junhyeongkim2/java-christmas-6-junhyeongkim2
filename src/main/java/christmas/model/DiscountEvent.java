@@ -9,6 +9,11 @@ import christmas.model.Menu.Menus;
 
 public abstract class DiscountEvent {
 
+    public static final int ZERO_DISCOUNT = 0;
+    protected static final int SEVENDAYS = 7;
+    protected static final int WEEKEND_ONE = 1;
+    protected static final int WEEKEND_TWO = 2;
+
     public static DiscountEvent Dday() {
         return new Dday();
     }
