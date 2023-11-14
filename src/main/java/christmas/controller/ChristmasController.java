@@ -20,18 +20,18 @@ public class ChristmasController {
 
     }
 
-    public void printResult(int day, Menus menus) {
+    private void printResult(int day, Menus menus) {
         printOrder(day, menus);
         printBenefit(day, menus);
     }
 
-    public void printOrder(int day, Menus menus) {
+    private void printOrder(int day, Menus menus) {
         OutputView.printStartBenefitMessage(day);
         OutputView.printMenus(menus.getMenus());
         OutputView.printTotalOrderAmount(planner.requestTotalOrderAmount(menus));
     }
 
-    public void printBenefit(int day, Menus menus) {
+    private void printBenefit(int day, Menus menus) {
         OutputView.printGiveawayMenu(planner.requestGiveawayMenuResult(menus, day));
         OutputView.printEventResult(planner.requestEventResult(menus, day).getEventResult());
         OutputView.printTotalBenefitAmount(planner.requestTotalBenefitAmount());
