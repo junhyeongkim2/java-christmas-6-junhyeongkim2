@@ -3,6 +3,7 @@ package christmas.domain;
 import christmas.model.DiscountInfo;
 import christmas.model.Event.EventType;
 import christmas.model.EventChecker;
+import christmas.model.EventResult;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
 import christmas.view.InputView;
@@ -160,6 +161,17 @@ public class EventCheckerTest {
         //then
         assertThat(discountInfo.getName()).isEqualTo(EventType.DDAY.getName());
         assertThat(discountInfo.getDiscount()).isEqualTo(0);
+    }
+
+    @DisplayName("총 주문 금액 10000원 이하일 때 이벤트 미적용 테스트 ")
+    @Test
+    void createEventResult_IsUnder10000_ReturnNoneEvent() {
+        //given
+        Menus menus = planner.isContainMenu(InputView.splitMenuAndCount(InputView.splitMenuWithComma("타파스-1,제로콜라-1")));
+        //when
+        EventResult eventResult = eventChecker.createEventResult(menus,25);
+        //then
+        assertThat(eventResult.getEventResult().size()).isEqualTo(0);
     }
 
 
