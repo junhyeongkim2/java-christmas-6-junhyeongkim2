@@ -10,8 +10,7 @@ import christmas.view.OutputView;
 public class ChristmasController {
 
     private Planner planner;
-    int day;
-    Menus menus;
+
 
     public ChristmasController(Planner planner) {
         this.planner = planner;
@@ -19,11 +18,22 @@ public class ChristmasController {
 
     public void start() {
         OutputView.printStartChristmasPlannerMessage();
-        day = Integer.parseInt(InputView.readVisitDay());
-        menus = planner.isContainMenu(InputView.readMenus());
+        printResult(Integer.parseInt(InputView.readVisitDay()), planner.isContainMenu(InputView.readMenus()));
+
+    }
+
+    public void printResult(int day, Menus menus) {
+        printOrder(day, menus);
+        printBenefit(day, menus);
+    }
+
+    public void printOrder(int day, Menus menus) {
         OutputView.printStartBenefitMessage(day);
         OutputView.printMenus(menus.getMenus());
         OutputView.printTotalOrderAmount(planner.requestTotalOrderAmount(menus));
+    }
+
+    public void printBenefit(int day, Menus menus) {
         OutputView.printGiveawayMenu(planner.requestGiveawayMenuResult(menus, day));
         OutputView.printEventResult(planner.requestEventResult(menus, day).getEventResult());
         OutputView.printTotalBenefitAmount(planner.requestTotalBenefitAmount());
