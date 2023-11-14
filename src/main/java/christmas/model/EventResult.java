@@ -8,7 +8,6 @@ public class EventResult {
 
     private final List<DiscountInfo> eventResult;
 
-    private static final String EVENT_NAME_GIVEAWAY = "증정 이벤트";
 
     private long totalBenefitAmount;
 
@@ -35,7 +34,7 @@ public class EventResult {
 
 
     public long calculateExpectedPaymentAmount(long totalOrderAmount) {
-        return totalOrderAmount + eventResult.stream().filter(result -> result.getName() != EVENT_NAME_GIVEAWAY)
+        return totalOrderAmount + eventResult.stream().filter(result -> result.isGiveaway() == false)
                 .mapToLong(DiscountInfo::getDiscount).sum();
     }
 

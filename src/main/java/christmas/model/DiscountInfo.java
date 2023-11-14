@@ -1,7 +1,7 @@
 package christmas.model;
 
 public class DiscountInfo {
-
+    private static final String EVENT_NAME_GIVEAWAY = "증정 이벤트";
     private final String name;
     private final long discount;
 
@@ -18,13 +18,19 @@ public class DiscountInfo {
         return this.discount;
     }
 
-    public Boolean isZeroDiscount(){
-        if(discount == 0){
+    public Boolean isZeroDiscount() {
+        if (discount == 0) {
             return true;
         }
         return false;
     }
 
+    public Boolean isGiveaway() {
+        if (name == EVENT_NAME_GIVEAWAY) {
+            return true;
+        }
+        return false;
+    }
 
 
 }
