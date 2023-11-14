@@ -1,13 +1,9 @@
 package christmas.view;
 
-import christmas.model.Planner;
-import christmas.view.InputView;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -104,7 +100,7 @@ public class InputViewTest {
 
     @DisplayName("메뉴 중복 시 예외 발생")
     @ParameterizedTest
-    @ValueSource(strings = {"타파스-1,타파스-1","티본스테이크-1,제로콜라-1,티본스테이크-1","제로콜라-1,제로콜라-1,타파스-1"})
+    @ValueSource(strings = {"타파스-1,타파스-1", "티본스테이크-1,제로콜라-1,티본스테이크-1", "제로콜라-1,제로콜라-1,타파스-1"})
     void validateMenuForm_IsDuplicatedMenu_ExceptionThrow(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);

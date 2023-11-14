@@ -1,7 +1,6 @@
 package christmas.domain;
 
 import christmas.model.Calculator;
-import christmas.model.EventChecker;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
 import christmas.view.InputView;

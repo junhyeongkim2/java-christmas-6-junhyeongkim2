@@ -3,8 +3,6 @@ package christmas.domain;
 import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 import christmas.view.InputView;
-import java.util.EnumMap;
-import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

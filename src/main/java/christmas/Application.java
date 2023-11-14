@@ -1,7 +1,6 @@
 package christmas;
 
 import christmas.controller.ChristmasController;
-import christmas.model.Calculator;
 import christmas.model.Planner;
 
 public class Application {

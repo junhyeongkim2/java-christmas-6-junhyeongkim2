@@ -1,7 +1,5 @@
 package christmas.controller;
 
-import christmas.model.Calculator;
-import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
 import christmas.view.InputView;

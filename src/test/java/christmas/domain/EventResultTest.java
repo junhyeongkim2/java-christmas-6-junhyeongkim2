@@ -1,8 +1,6 @@
 package christmas.domain;
 
-import christmas.model.Badge;
 import christmas.model.Calculator;
-import christmas.model.DiscountEvent;
 import christmas.model.DiscountInfo;
 import christmas.model.EventChecker;
 import christmas.model.EventResult;

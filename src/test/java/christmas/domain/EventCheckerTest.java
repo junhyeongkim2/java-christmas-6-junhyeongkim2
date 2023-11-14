@@ -1,4 +1,4 @@
-package christmas;
+package christmas.domain;
 
 import christmas.model.DiscountInfo;
 import christmas.model.Event.EventType;
@@ -120,7 +120,7 @@ public class EventCheckerTest {
         //given
         DiscountInfo discountInfo;
         //when
-        discountInfo = eventChecker.checkSpecialDiscount(menus,31);
+        discountInfo = eventChecker.checkSpecialDiscount(menus, 31);
         //then
         assertThat(discountInfo.getName()).isEqualTo(EventType.SPECIAL.getName());
         assertThat(discountInfo.getDiscount()).isEqualTo(-1000);
@@ -132,7 +132,7 @@ public class EventCheckerTest {
         //given
         DiscountInfo discountInfo;
         //when
-        discountInfo = eventChecker.checkSpecialDiscount(menus,13);
+        discountInfo = eventChecker.checkSpecialDiscount(menus, 13);
         //then
         assertThat(discountInfo.getDiscount()).isEqualTo(0);
     }
@@ -143,7 +143,7 @@ public class EventCheckerTest {
         //given
         DiscountInfo discountInfo;
         //when
-        discountInfo = eventChecker.checkDdayDiscount(menus,25);
+        discountInfo = eventChecker.checkDdayDiscount(menus, 25);
         //then
         assertThat(discountInfo.getName()).isEqualTo(EventType.DDAY.getName());
         assertThat(discountInfo.getDiscount()).isEqualTo(-3400);
@@ -156,7 +156,7 @@ public class EventCheckerTest {
         //given
         DiscountInfo discountInfo;
         //when
-        discountInfo = eventChecker.checkDdayDiscount(menus,28);
+        discountInfo = eventChecker.checkDdayDiscount(menus, 28);
         //then
         assertThat(discountInfo.getName()).isEqualTo(EventType.DDAY.getName());
         assertThat(discountInfo.getDiscount()).isEqualTo(0);
