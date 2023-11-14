@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.model.EventResult;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
 import java.io.ByteArrayOutputStream;
@@ -190,6 +191,20 @@ public class OutputViewTest {
         OutputView.printBadge(planner.requestBadge());
         //then
         assertThat(output.toString()).isEqualTo("<12월 이벤트 배지>\n없음\n");
+    }
+
+    @DisplayName("혜택 내역 없음 출력 메세지 테스트")
+    @Test
+    void printEventResult_EqualNothingMessage_Success() {
+        //given
+        ByteArrayOutputStream output = captureOutputValues();
+        //when
+        menus = planner.isContainMenu(
+                InputView.splitMenuAndCount(InputView.splitMenuWithComma("타파스-1,티본스테이크-1")));
+        EventResult eventResult = planner.requestEventResult(menus, 26);
+        OutputView.printEventResult(eventResult.getEventResult());
+        //then
+        assertThat(output.toString()).isEqualTo("<혜택 내역>\n없음\n\n");
     }
 
     @DisplayName("DecimalFormat 변환 기능 테스트")
