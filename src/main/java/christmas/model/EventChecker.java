@@ -15,14 +15,14 @@ public class EventChecker {
         return createEmptyEventResult();
     }
 
-    public EventResult createContainedEventResult(Menus menus, int day) {
+    private EventResult createContainedEventResult(Menus menus, int day) {
         return eventResult = EventResult.createFrom(
                 List.of(checkDdayDiscount(menus, day), checkWeekdayDiscount(menus, day),
                         checkWeekendDiscount(menus, day),
                         checkSpecialDiscount(menus, day), checkGiveawayMenu(menus, day)));
     }
 
-    public EventResult createEmptyEventResult() {
+    private EventResult createEmptyEventResult() {
         return eventResult = EventResult.createFrom(List.of());
     }
 
