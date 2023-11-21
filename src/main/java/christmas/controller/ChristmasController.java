@@ -1,13 +1,22 @@
 package christmas.controller;
 
+import christmas.model.Event.ChristmasEvent;
+import christmas.model.Event.Event;
+import christmas.model.Event.IDiscount;
+import christmas.model.Event.WeekendDiscount;
+import christmas.model.Menu.Menu;
 import christmas.model.Menu.Menus;
 import christmas.model.Planner;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+import java.util.ArrayList;
 
 public class ChristmasController {
+    // 플래너
+    // 이벤트 - 주어진 조건들에 대한 정보들
 
     private Planner planner;
+    private Even
 
 
     public ChristmasController(Planner planner) {
@@ -15,6 +24,10 @@ public class ChristmasController {
     }
 
     public void start() {
+        List<IDiscount> discountList = ArrayList<IDiscount>();
+        discountList.add(WeekendDiscount)
+                do
+        Event event = ChristmasEvent(Menu(), discountList)
         OutputView.printStartChristmasPlannerMessage();
         printResult(Integer.parseInt(InputView.readVisitDay()), planner.isContainMenu(InputView.readMenus()));
 

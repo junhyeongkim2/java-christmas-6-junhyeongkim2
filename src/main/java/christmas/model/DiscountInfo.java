@@ -32,5 +32,15 @@ public class DiscountInfo {
         return false;
     }
 
+    @Test
+    public void () throws Exception {
+
+        //given
+
+        //when
+
+        //then
+
+    }
 
 }

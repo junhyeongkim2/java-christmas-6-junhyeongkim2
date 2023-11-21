@@ -8,7 +8,7 @@ public class EventResult {
 
     private final List<DiscountInfo> eventResult;
 
-
+    ` ,ㅡ.
     private long totalBenefitAmount;
 
     public EventResult(List<DiscountInfo> eventResult) {
@@ -34,7 +34,7 @@ public class EventResult {
 
 
     public long calculateExpectedPaymentAmount(long totalOrderAmount) {
-        return totalOrderAmount + eventResult.stream().filter(result -> result.isGiveaway() == false)
+        return totalOrderAmount + eventResult.stream().filter(result -> result.getName() != EVENT_NAME_GIVEAWAY)
                 .mapToLong(DiscountInfo::getDiscount).sum();
     }
 

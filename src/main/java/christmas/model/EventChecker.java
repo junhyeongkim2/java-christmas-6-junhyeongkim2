@@ -15,6 +15,11 @@ public class EventChecker {
         return createEmptyEventResult();
     }
 
+    // 행위 중심으로 생각
+    // 만들어진 이벤트에 대한여 정상적으로 적용 됬는지, 할인을 적용 시킨 정보를 리스트를 만든다.
+    // 메뉴에 정가가있을거고 그러면 그 정가에 대해서 만들어진 이벤트 정보를 통해서 할인 된 금액을 만들어내느거네
+    //
+
     private EventResult createContainedEventResult(Menus menus, int day) {
         return eventResult = EventResult.createFrom(
                 List.of(checkDdayDiscount(menus, day), checkWeekdayDiscount(menus, day),
