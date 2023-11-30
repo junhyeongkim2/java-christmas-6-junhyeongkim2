@@ -2,6 +2,7 @@ package christmas.model;
 
 import christmas.model.Event.ChristmasDdayEvent;
 import christmas.model.Event.WeekdayEvent;
+import christmas.model.Event.WeekendEvent;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,22 @@ public class EventPolicyTest {
         int discountAmount = weekdayEvent.discount(12, menus);
         //then
         assertThat(discountAmount).isEqualTo(10115);
+    }
+
+    @DisplayName("주말 이벤트 할인 테스트")
+    @Test
+    void discount_EqualWeekendDiscountAmount_Success() {
+        //given
+        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
+        menus.put(Menu.레드와인, 3);
+        menus.put(Menu.바비큐립, 6);
+        menus.put(Menu.아이스크림, 5);
+        menus.put(Menu.해산물파스타,5);
+        EventPolicy weekendEvent = new WeekendEvent();
+        //when
+        int discountAmount = weekendEvent.discount(9, menus);
+        //then
+        assertThat(discountAmount).isEqualTo(2023 * 11);
     }
 
 

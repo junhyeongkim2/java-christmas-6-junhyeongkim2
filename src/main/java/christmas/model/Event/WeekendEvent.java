@@ -15,7 +15,7 @@ public class WeekendEvent implements EventPolicy {
     @Override
     public boolean isSatisfied(int day, Map<Menu, Integer> menus) {
         LocalDate date = LocalDate.of(2023, 12, day);
-        if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY) && date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+        if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
             return true;
         }
         return false;
@@ -24,7 +24,7 @@ public class WeekendEvent implements EventPolicy {
     @Override
     public int discount(int day, Map<Menu, Integer> menus) {
         if (isSatisfied(day, menus)) {
-            return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isDessert())
+            return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isMain())
                     .mapToInt(key -> menus.get(key)).sum() * 2023;
         }
         return 0;
