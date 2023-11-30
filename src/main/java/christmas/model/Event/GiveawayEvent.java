@@ -1,6 +1,8 @@
 package christmas.model.Event;
 
 import christmas.model.EventPolicy;
+import christmas.model.Menu;
+import java.util.Map;
 
 public class GiveawayEvent implements EventPolicy {
 
@@ -10,12 +12,13 @@ public class GiveawayEvent implements EventPolicy {
     }
 
     @Override
-    public boolean isSatisfied(int day, String menus) {
+    public boolean isSatisfied(int day, Map<Menu, Integer> menus) {
         return false;
     }
 
     @Override
-    public int discount(int day, String menus) {
+    public int discount(int day, Map<Menu, Integer> menus) {
         return 0;
     }
+
 }
