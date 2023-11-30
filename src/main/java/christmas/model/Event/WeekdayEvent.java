@@ -4,11 +4,18 @@ import christmas.model.EventPolicy;
 
 public class WeekdayEvent implements EventPolicy {
 
-    public WeekdayEvent(String name) {
+    @Override
+    public EventInfo getEventInfo() {
+        return EventInfo.WEEKDAY_EVENT;
     }
 
     @Override
-    public String getName() {
-        return null;
+    public boolean isSatisfied(int day, String menus) {
+        return false;
+    }
+
+    @Override
+    public int discount(int day, String menus) {
+        return 0;
     }
 }

@@ -1,6 +1,7 @@
 package christmas.model;
 
 import christmas.model.Event.ChristmasDdayEvent;
+import christmas.model.Event.EventInfo;
 import christmas.model.Event.WeekdayEvent;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -15,13 +16,13 @@ public class EventResultTest {
     void createResult_EqualResult_Success() {
         //given
         EventResult eventResult = new EventResult(
-                List.of(new ChristmasDdayEvent("event1"), new WeekdayEvent("event2")));
+                List.of(new ChristmasDdayEvent(), new WeekdayEvent()));
         //when
         List<EventPolicy> events = eventResult.getEvents();
         //then
         assertThat(events.size()).isEqualTo(2);
-        assertThat(events.get(0).getName()).isEqualTo("event1");
-        assertThat(events.get(1).getName()).isEqualTo("event2");
+        assertThat(events.get(0).getEventInfo()).isEqualTo(EventInfo.CHRISTMAS_D_DAY_EVENT);
+        assertThat(events.get(1).getEventInfo()).isEqualTo(EventInfo.WEEKDAY_EVENT);
 
     }
 
