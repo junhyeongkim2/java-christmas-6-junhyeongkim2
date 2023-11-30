@@ -4,13 +4,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class EventResult {
-    private final List<EventType> events;
+    private final List<EventPolicy> events;
 
-    public EventResult(List<EventType> events) {
+    public EventResult(List<EventPolicy> events) {
         this.events = events;
     }
 
-    public List<EventType> getEvents() {
+    public List<EventPolicy> getEvents() {
         return Collections.unmodifiableList(events);
     }
 }

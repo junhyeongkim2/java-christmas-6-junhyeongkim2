@@ -1,10 +1,11 @@
 package christmas.model;
 
+import christmas.model.Event.ChristmasDdayEvent;
+import christmas.model.Event.WeekdayEvent;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class EventResultTest {
@@ -13,13 +14,14 @@ public class EventResultTest {
     @Test
     void createResult_EqualResult_Success() {
         //given
-        EventResult eventResult = new EventResult(List.of(new EventType("event1"), new EventType("event2")));
+        EventResult eventResult = new EventResult(
+                List.of(new ChristmasDdayEvent("event1"), new WeekdayEvent("event2")));
         //when
-        List<EventType> events = eventResult.getEvents();
+        List<EventPolicy> events = eventResult.getEvents();
         //then
         assertThat(events.size()).isEqualTo(2);
-        assertThat(events.get(0).name()).isEqualTo("event1");
-        assertThat(events.get(1).name()).isEqualTo("event2");
+        assertThat(events.get(0).getName()).isEqualTo("event1");
+        assertThat(events.get(1).getName()).isEqualTo("event2");
 
     }
 
