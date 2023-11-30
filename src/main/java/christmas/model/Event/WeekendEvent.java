@@ -25,7 +25,7 @@ public class WeekendEvent implements EventPolicy {
     public int discount(int day, Map<Menu, Integer> menus) {
         if (isSatisfied(day, menus)) {
             return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isMain())
-                    .mapToInt(key -> menus.get(key)).sum() * 2023;
+                    .mapToInt(key -> menus.get(key)).sum() * EventInfo.WEEKEND_EVENT.getDiscount();
         }
         return 0;
     }

@@ -25,7 +25,7 @@ public class SpecialEvent implements EventPolicy {
     @Override
     public int discount(int day, Map<Menu, Integer> menus) {
         if (isSatisfied(day, menus)) {
-            return 1000;
+            return EventInfo.SPECIAL_EVENT.getDiscount();
         }
         return 0;
     }

@@ -6,7 +6,6 @@ import christmas.model.Event.SpecialEvent;
 import christmas.model.Event.WeekdayEvent;
 import christmas.model.Event.WeekendEvent;
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

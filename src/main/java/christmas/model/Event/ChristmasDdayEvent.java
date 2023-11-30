@@ -23,7 +23,7 @@ public class ChristmasDdayEvent implements EventPolicy {
     @Override
     public int discount(int day, Map<Menu, Integer> menus) {
         if (isSatisfied(day, menus)) {
-            return 1000 + ((day - 1) * 100);
+            return 1000 + ((day - 1) * EventInfo.CHRISTMAS_D_DAY_EVENT.getDiscount());
         }
         return 0;
     }
