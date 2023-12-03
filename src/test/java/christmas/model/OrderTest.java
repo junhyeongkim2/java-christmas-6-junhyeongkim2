@@ -40,5 +40,12 @@ public class OrderTest {
         assertThatThrownBy(() -> Order.of("샴페인-5")).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("메뉴 한 번에 최대 20개 넘을 경우 에러 발생 테스트")
+    @Test
+    void validateIsOverTwentyMenu_IfOverTwentyMenu_ExceptionThrow() {
+        //given&&when&&then
+        assertThatThrownBy(() -> Order.of("샴페인-5,타파스-16")).isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }

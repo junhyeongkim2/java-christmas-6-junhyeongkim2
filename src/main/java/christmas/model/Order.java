@@ -18,7 +18,14 @@ public class Order {
         Matcher matcher = getMenuMatcher(input);
         createMenusWithMatcher(menus, matcher);
         validateOnlyDrink(menus);
+        validateIsOverTwentyMenu(menus);
         return new Order(menus);
+    }
+
+    private static void validateIsOverTwentyMenu(Map<Menu, Integer> menus) {
+        if (menus.values().stream().mapToInt(value -> value.intValue()).sum() > 20) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void validateOnlyDrink(Map<Menu, Integer> menus) {
@@ -26,6 +33,7 @@ public class Order {
             throw new IllegalArgumentException();
         }
     }
+
 
     private static void createMenusWithMatcher(Map<Menu, Integer> menus, Matcher matcher) {
         while (matcher.find()) {
