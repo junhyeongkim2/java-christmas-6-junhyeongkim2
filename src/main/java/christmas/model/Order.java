@@ -53,11 +53,18 @@ public class Order {
         }
     }
 
+    private static void validateDuplicateMenu(Map<Menu, Integer> menus, String menuName) {
+        if (menus.containsKey(Menu.valueOf(menuName))) {
+            throw new IllegalArgumentException();
+        }
+
+    }
 
     private static void createMenusWithMatcher(Map<Menu, Integer> menus, Matcher matcher) {
         while (matcher.find()) {
             String menuName = matcher.group(1);
             int quantity = Integer.parseInt(matcher.group(2));
+            validateDuplicateMenu(menus, menuName);
             menus.put(Menu.valueOf(menuName), quantity);
         }
     }

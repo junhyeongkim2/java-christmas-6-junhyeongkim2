@@ -61,5 +61,11 @@ public class OrderTest {
         assertThatThrownBy(() -> Order.of("샴페인-5,타파스-^%티본스테이크-1")).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("중복된 메뉴가 들어왔을 경우 에러 발생 테스트")
+    @Test
+    void validateDuplicateMenu_IfDuplicate_ExceptionThrow() {
+        //given&&when&&then
+        assertThatThrownBy(() -> Order.of("샴페인-5,타파스-5,샴페인-5,샴페인-5")).isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
