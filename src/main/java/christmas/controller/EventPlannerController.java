@@ -11,6 +11,7 @@ public class EventPlannerController {
         Order order = Order.of(InputView.readMenus());
         OutputView.printBenefitStartMessage(visitDay);
         OutputView.printMenus(order.toString());
+        OutputView.printTotalOrderAmount(order.calculateTotalOrderAmount());
 
 
     }

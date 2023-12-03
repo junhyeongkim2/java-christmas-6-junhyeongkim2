@@ -13,4 +13,8 @@ public class OutputView {
     public static void printMenus(String menus) {
         System.out.println(menus);
     }
+
+    public static void printTotalOrderAmount(int totalOrderAmount) {
+        System.out.println("<할인 전 총주문 금액>\n" + totalOrderAmount + "원");
+    }
 }
