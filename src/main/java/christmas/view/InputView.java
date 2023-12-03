@@ -1,6 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 
 public class InputView {
 
@@ -21,6 +22,13 @@ public class InputView {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateIsInRange(String input) {
+        int visitDay = Integer.parseInt(input);
+        if (visitDay < 1 || visitDay > 31) {
             throw new IllegalArgumentException();
         }
     }
