@@ -17,4 +17,6 @@ public class EventResult {
     public int calculateTotalBenefit() {
         return events.stream().mapToInt(EventPolicy::discount).sum();
     }
+
+
 }
