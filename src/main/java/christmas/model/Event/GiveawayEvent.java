@@ -5,6 +5,13 @@ import christmas.model.Menu;
 import java.util.Map;
 
 public class GiveawayEvent implements EventPolicy {
+    private final int day;
+    private final Map<Menu, Integer> menus;
+
+    public GiveawayEvent(int day, Map<Menu, Integer> menus) {
+        this.day = day;
+        this.menus = menus;
+    }
 
     @Override
     public EventInfo getEventInfo() {
@@ -20,7 +27,7 @@ public class GiveawayEvent implements EventPolicy {
     }
 
     @Override
-    public int discount(int day, Map<Menu, Integer> menus) {
+    public int discount() {
         if (isSatisfied(day, menus)) {
             return Menu.샴페인.getPrice();
         }

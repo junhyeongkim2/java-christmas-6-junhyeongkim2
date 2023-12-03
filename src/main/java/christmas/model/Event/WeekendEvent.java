@@ -7,6 +7,14 @@ import java.time.LocalDate;
 import java.util.Map;
 
 public class WeekendEvent implements EventPolicy {
+    private final int day;
+    private final Map<Menu, Integer> menus;
+
+    public WeekendEvent(int day, Map<Menu, Integer> menus) {
+        this.day = day;
+        this.menus = menus;
+    }
+
     @Override
     public EventInfo getEventInfo() {
         return EventInfo.WEEKEND_EVENT;
@@ -22,7 +30,7 @@ public class WeekendEvent implements EventPolicy {
     }
 
     @Override
-    public int discount(int day, Map<Menu, Integer> menus) {
+    public int discount() {
         if (isSatisfied(day, menus)) {
             return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isMain())
                     .mapToInt(key -> menus.get(key)).sum() * EventInfo.WEEKEND_EVENT.getDiscount();

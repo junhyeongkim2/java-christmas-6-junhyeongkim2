@@ -3,6 +3,7 @@ package christmas.model;
 import christmas.model.Event.ChristmasDdayEvent;
 import christmas.model.Event.EventInfo;
 import christmas.model.Event.WeekdayEvent;
+import java.util.EnumMap;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ public class EventResultTest {
     void createResult_EqualResult_Success() {
         //given
         EventResult eventResult = new EventResult(
-                List.of(new ChristmasDdayEvent(), new WeekdayEvent()));
+                List.of(new ChristmasDdayEvent(25,new EnumMap<Menu, Integer>(Menu.class)), new WeekdayEvent(25, new EnumMap<Menu, Integer>(Menu.class))));
         //when
         List<EventPolicy> events = eventResult.getEvents();
         //then

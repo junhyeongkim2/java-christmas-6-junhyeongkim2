@@ -23,9 +23,9 @@ public class EventPolicyTest {
         menus.put(Menu.레드와인, 3);
         menus.put(Menu.바비큐립, 5);
         menus.put(Menu.아이스크림, 5);
-        EventPolicy christmasDdayEvent = new ChristmasDdayEvent();
+        EventPolicy christmasDdayEvent = new ChristmasDdayEvent(25,menus);
         //when
-        int discountAmount = christmasDdayEvent.discount(25, menus);
+        int discountAmount = christmasDdayEvent.discount();
         //then
         assertThat(discountAmount).isEqualTo(3400);
     }
@@ -38,9 +38,9 @@ public class EventPolicyTest {
         menus.put(Menu.레드와인, 3);
         menus.put(Menu.바비큐립, 5);
         menus.put(Menu.아이스크림, 5);
-        EventPolicy weekdayEvent = new WeekdayEvent();
+        EventPolicy weekdayEvent = new WeekdayEvent(12,menus);
         //when
-        int discountAmount = weekdayEvent.discount(12, menus);
+        int discountAmount = weekdayEvent.discount();
         //then
         assertThat(discountAmount).isEqualTo(10115);
     }
@@ -54,9 +54,9 @@ public class EventPolicyTest {
         menus.put(Menu.바비큐립, 6);
         menus.put(Menu.아이스크림, 5);
         menus.put(Menu.해산물파스타, 5);
-        EventPolicy weekendEvent = new WeekendEvent();
+        EventPolicy weekendEvent = new WeekendEvent(9,menus);
         //when
-        int discountAmount = weekendEvent.discount(9, menus);
+        int discountAmount = weekendEvent.discount();
         //then
         assertThat(discountAmount).isEqualTo(2023 * 11);
     }
@@ -67,9 +67,9 @@ public class EventPolicyTest {
         //given
         Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
         menus.put(Menu.레드와인, 3);
-        EventPolicy specialEvent = new SpecialEvent();
+        EventPolicy specialEvent = new SpecialEvent(25,menus);
         //when
-        int discountAmount = specialEvent.discount(25, menus);
+        int discountAmount = specialEvent.discount();
         //then
         assertThat(discountAmount).isEqualTo(1000);
     }
@@ -82,9 +82,9 @@ public class EventPolicyTest {
         menus.put(Menu.레드와인, 3);
         menus.put(Menu.바비큐립, 5);
         menus.put(Menu.해산물파스타, 3);
-        EventPolicy giveawayEvent = new GiveawayEvent();
+        EventPolicy giveawayEvent = new GiveawayEvent(25,menus);
         //when
-        int discountAmount = giveawayEvent.discount(25, menus);
+        int discountAmount = giveawayEvent.discount();
         //then
         assertThat(discountAmount).isEqualTo(Menu.샴페인.getPrice());
     }

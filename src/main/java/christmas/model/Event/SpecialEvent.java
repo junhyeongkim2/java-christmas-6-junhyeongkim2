@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 public class SpecialEvent implements EventPolicy {
+    private final int day;
+    private final Map<Menu, Integer> menus;
+
+    public SpecialEvent(int day, Map<Menu, Integer> menus) {
+        this.day = day;
+        this.menus = menus;
+    }
 
     private final List<Integer> specialDay = List.of(3, 10, 17, 24, 25, 31);
 
@@ -23,7 +30,7 @@ public class SpecialEvent implements EventPolicy {
     }
 
     @Override
-    public int discount(int day, Map<Menu, Integer> menus) {
+    public int discount() {
         if (isSatisfied(day, menus)) {
             return EventInfo.SPECIAL_EVENT.getDiscount();
         }

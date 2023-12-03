@@ -7,6 +7,14 @@ import java.util.Map;
 
 public class ChristmasDdayEvent implements EventPolicy {
 
+    private final int day;
+    private final Map<Menu, Integer> menus;
+
+    public ChristmasDdayEvent(int day, Map<Menu, Integer> menus) {
+        this.day = day;
+        this.menus = menus;
+    }
+
     @Override
     public EventInfo getEventInfo() {
         return EventInfo.CHRISTMAS_D_DAY_EVENT;
@@ -21,7 +29,7 @@ public class ChristmasDdayEvent implements EventPolicy {
     }
 
     @Override
-    public int discount(int day, Map<Menu, Integer> menus) {
+    public int discount() {
         if (isSatisfied(day, menus)) {
             return 1000 + ((day - 1) * EventInfo.CHRISTMAS_D_DAY_EVENT.getDiscount());
         }

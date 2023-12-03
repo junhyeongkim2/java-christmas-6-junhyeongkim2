@@ -10,6 +10,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class WeekdayEvent implements EventPolicy {
+    private final int day;
+    private final Map<Menu, Integer> menus;
+    public WeekdayEvent(int day, Map<Menu, Integer> menus) {
+        this.day = day;
+        this.menus = menus;
+    }
 
     @Override
     public EventInfo getEventInfo() {
@@ -26,7 +32,7 @@ public class WeekdayEvent implements EventPolicy {
     }
 
     @Override
-    public int discount(int day, Map<Menu, Integer> menus) {
+    public int discount() {
         if (isSatisfied(day, menus)) {
             return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isDessert()).mapToInt(key->menus.get(key)).sum() * EventInfo.WEEKDAY_EVENT.getDiscount();
         }
