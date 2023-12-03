@@ -39,5 +39,17 @@ public class Order {
                 .sum();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<주문 메뉴>\n");
+
+        for (Map.Entry<Menu, Integer> entry : menus.entrySet()) {
+            String menuName = String.valueOf(entry.getKey()); // 메뉴 이름 가져오기
+            int quantity = entry.getValue(); // 메뉴 개수 가져오기
+            sb.append(menuName).append(" ").append(quantity).append("개\n");
+        }
+        return sb.toString();
+    }
 
 }

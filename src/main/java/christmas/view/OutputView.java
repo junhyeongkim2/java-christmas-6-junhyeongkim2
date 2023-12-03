@@ -7,7 +7,10 @@ public class OutputView {
     }
 
     public static void printBenefitStartMessage(int visitDay) {
-        System.out.println("12월 " + visitDay + "에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+        System.out.println("12월 " + visitDay + "에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n");
     }
 
+    public static void printMenus(String menus) {
+        System.out.println(menus);
+    }
 }

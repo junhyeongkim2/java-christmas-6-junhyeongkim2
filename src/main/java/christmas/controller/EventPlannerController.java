@@ -8,9 +8,9 @@ public class EventPlannerController {
     public void start() {
         OutputView.printStartMessage();
         int visitDay = Integer.parseInt(InputView.readVisitDay());
-        String menus = InputView.readMenus();
-        Order order = Order.of(menus);
-
+        Order order = Order.of(InputView.readMenus());
+        OutputView.printBenefitStartMessage(visitDay);
+        OutputView.printMenus(order.toString());
 
 
     }
