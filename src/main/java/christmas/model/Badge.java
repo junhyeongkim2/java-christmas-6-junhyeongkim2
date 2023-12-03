@@ -15,13 +15,13 @@ public enum Badge {
     }
 
     public static Badge from(int totalBenefitAmount) {
-        if (totalBenefitAmount >= 20000) {
+        if (totalBenefitAmount <= -20000) {
             return Badge.SANTA;
         }
-        if (totalBenefitAmount >= 10000) {
+        if (totalBenefitAmount <= -10000) {
             return Badge.TREE;
         }
-        if (totalBenefitAmount >= 5000) {
+        if (totalBenefitAmount <= -5000) {
             return Badge.STAR;
         }
         return Badge.NONE;

@@ -34,7 +34,7 @@ public class EventResult {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         events.stream().filter(eventPolicy -> eventPolicy.isWinningEvents())
-                .forEach(eventPolicy -> sb.append(eventPolicy.getEventName() + ": -" + eventPolicy.discount() + "원\n"));
+                .forEach(eventPolicy -> sb.append(eventPolicy.getEventName() + ": " + eventPolicy.discount() + "원\n"));
         return sb.toString();
     }
 

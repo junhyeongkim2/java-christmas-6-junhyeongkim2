@@ -37,7 +37,7 @@ public class ChristmasDdayEvent implements EventPolicy {
     @Override
     public int discount() {
         if (isSatisfied(day, order)) {
-            return 1000 + ((day - 1) * EventInfo.CHRISTMAS_D_DAY_EVENT.getDiscount());
+            return -1000 + ((day - 1) * EventInfo.CHRISTMAS_D_DAY_EVENT.getDiscount());
         }
         return 0;
     }

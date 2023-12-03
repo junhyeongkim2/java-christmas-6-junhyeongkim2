@@ -42,7 +42,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualSanta_Success() {
         //given
-        EventResult eventResult = EventResult.from(15, Order.of("바비큐립-5개"));
+        EventResult eventResult = EventResult.from(15, Order.of("바비큐립-10개"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then

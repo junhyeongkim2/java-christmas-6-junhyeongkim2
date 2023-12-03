@@ -39,4 +39,8 @@ public class OutputView {
         }
         System.out.println(eventResult.toString());
     }
+
+    public static void printTotalBenefitAmount(int calculateTotalBenefit) {
+        System.out.println("<총혜택 금액>\n" + calculateTotalBenefit + "원");
+    }
 }

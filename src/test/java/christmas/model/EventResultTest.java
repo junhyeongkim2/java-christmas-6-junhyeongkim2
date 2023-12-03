@@ -37,7 +37,7 @@ public class EventResultTest {
         //when
         int totalBenefit = eventResult.calculateTotalBenefit();
         //then
-        assertThat(totalBenefit).isEqualTo(3400 + 2023 * 2 + 1000 + Menu.샴페인.getPrice());
+        assertThat(totalBenefit).isEqualTo(-3400 + -2023 * 2 + -1000 + -Menu.샴페인.getPrice());
 
     }
 

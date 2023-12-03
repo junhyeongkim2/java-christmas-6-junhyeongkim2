@@ -35,7 +35,7 @@ public class GiveawayEvent implements EventPolicy {
     @Override
     public int discount() {
         if (isSatisfied(day, order)) {
-            return Menu.샴페인.getPrice();
+            return -Menu.샴페인.getPrice();
         }
         return 0;
     }

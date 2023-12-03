@@ -23,7 +23,7 @@ public class EventPolicyTest {
         //when
         int discountAmount = christmasDdayEvent.discount();
         //then
-        assertThat(discountAmount).isEqualTo(3400);
+        assertThat(discountAmount).isEqualTo(-3400);
     }
 
     @DisplayName("평일 이벤트 할인 테스트")
@@ -34,7 +34,7 @@ public class EventPolicyTest {
         //when
         int discountAmount = weekdayEvent.discount();
         //then
-        assertThat(discountAmount).isEqualTo(10115);
+        assertThat(discountAmount).isEqualTo(-10115);
     }
 
     @DisplayName("주말 이벤트 할인 테스트")
@@ -45,7 +45,7 @@ public class EventPolicyTest {
         //when
         int discountAmount = weekendEvent.discount();
         //then
-        assertThat(discountAmount).isEqualTo(2023 * 11);
+        assertThat(discountAmount).isEqualTo(-(2023 * 11));
     }
 
     @DisplayName("특별 이벤트 할인 테스트")
@@ -56,7 +56,7 @@ public class EventPolicyTest {
         //when
         int discountAmount = specialEvent.discount();
         //then
-        assertThat(discountAmount).isEqualTo(1000);
+        assertThat(discountAmount).isEqualTo(-1000);
     }
 
     @DisplayName("증정 이벤트 할인 테스트")
@@ -67,7 +67,7 @@ public class EventPolicyTest {
         //when
         int discountAmount = giveawayEvent.discount();
         //then
-        assertThat(discountAmount).isEqualTo(Menu.샴페인.getPrice());
+        assertThat(discountAmount).isEqualTo(-Menu.샴페인.getPrice());
     }
 
 
