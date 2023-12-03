@@ -47,5 +47,12 @@ public class OrderTest {
         assertThatThrownBy(() -> Order.of("샴페인-5,타파스-16")).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("메뉴판에 메뉴가 없을 경우 에러 발생 테스트")
+    @Test
+    void validateIsExistMenu_IfNotExist_ExceptionThrow() {
+        //given&&when&&then
+        assertThatThrownBy(() -> Order.of("샴페인-5,타파스-1,해산물찌개-1")).isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }

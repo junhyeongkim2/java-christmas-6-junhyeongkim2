@@ -1,5 +1,7 @@
 package christmas.model;
 
+import java.util.Arrays;
+
 public enum Menu {
 
     없음("없음", "없음", 0),
@@ -45,6 +47,10 @@ public enum Menu {
             return true;
         }
         return false;
+    }
+
+    public Boolean isContain() {
+        return Arrays.stream(Menu.values()).allMatch(menu -> menu.equals(name));
     }
 
 

@@ -1,5 +1,6 @@
 package christmas.model;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -19,7 +20,14 @@ public class Order {
         createMenusWithMatcher(menus, matcher);
         validateOnlyDrink(menus);
         validateIsOverTwentyMenu(menus);
+        validateIsExistMenu(menus);
         return new Order(menus);
+    }
+
+    private static void validateIsExistMenu(Map<Menu, Integer> menus) {
+        if (menus.keySet().stream().allMatch(key -> key.isContain())) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void validateIsOverTwentyMenu(Map<Menu, Integer> menus) {
