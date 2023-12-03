@@ -39,7 +39,6 @@ public class WeekendEvent implements EventPolicy {
     @Override
     public int discount() {
         if (isSatisfied(day, order)) {
-            System.out.println(order.calculateTotalMainOrderAmount() * EventInfo.WEEKEND_EVENT.getDiscount());
             return order.calculateTotalMainOrderAmount() * EventInfo.WEEKEND_EVENT.getDiscount();
         }
         return 0;
