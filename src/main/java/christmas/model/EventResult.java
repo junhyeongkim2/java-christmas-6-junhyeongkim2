@@ -42,4 +42,8 @@ public class EventResult {
     public int calcualteExpectedPaymentAmount() {
         return events.stream().filter(event -> event.isGiveaway() == false).mapToInt(event -> event.discount()).sum();
     }
+
+    public Badge calculateBadge() {
+        return Badge.from(calculateTotalBenefit());
+    }
 }
