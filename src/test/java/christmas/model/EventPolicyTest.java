@@ -19,7 +19,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualChristmasDdayDiscountAmount_Success() {
         //given
-        EventPolicy christmasDdayEvent = new ChristmasDdayEvent(25, Order.of("레드와인-3개,바비큐립-5개,아이스크림-5개"));
+        EventPolicy christmasDdayEvent = new ChristmasDdayEvent(25, Order.of("레드와인-3,바비큐립-5,아이스크림-5"));
         //when
         int discountAmount = christmasDdayEvent.discount();
         //then
@@ -30,7 +30,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualWeekdayDiscountAmount_Success() {
         //given
-        EventPolicy weekdayEvent = new WeekdayEvent(12, Order.of("레드와인-3개,바비큐립-5개,아이스크림-5개"));
+        EventPolicy weekdayEvent = new WeekdayEvent(12, Order.of("레드와인-3,바비큐립-5,아이스크림-5"));
         //when
         int discountAmount = weekdayEvent.discount();
         //then
@@ -41,7 +41,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualWeekendDiscountAmount_Success() {
         //given
-        EventPolicy weekendEvent = new WeekendEvent(9, Order.of("레드와인-3개,바비큐립-6개,아이스크림-5개,해산물파스타-5개"));
+        EventPolicy weekendEvent = new WeekendEvent(9, Order.of("레드와인-3,바비큐립-6,아이스크림-5,해산물파스타-5"));
         //when
         int discountAmount = weekendEvent.discount();
         //then
@@ -52,7 +52,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualSepecailDiscountAmount_Success() {
         //given
-        EventPolicy specialEvent = new SpecialEvent(25, Order.of("바비큐립-6개,아이스크림-5개"));
+        EventPolicy specialEvent = new SpecialEvent(25, Order.of("바비큐립-6,아이스크림-5"));
         //when
         int discountAmount = specialEvent.discount();
         //then
@@ -63,7 +63,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualGiveawayDiscountAmount_Success() {
         //given
-        EventPolicy giveawayEvent = new GiveawayEvent(16, Order.of("레드와인-3개,바비큐립-5개,해산물파스타-3개"));
+        EventPolicy giveawayEvent = new GiveawayEvent(16, Order.of("레드와인-3,바비큐립-5,해산물파스타-3"));
         //when
         int discountAmount = giveawayEvent.discount();
         //then

@@ -17,7 +17,7 @@ public class EventResultTest {
     @Test
     void createResult_EqualResult_Success() {
         //given
-        EventResult eventResult = EventResult.from(25, Order.of("아이스크림-3개"));
+        EventResult eventResult = EventResult.from(25, Order.of("아이스크림-3"));
         //when
         List<EventPolicy> events = eventResult.getEvents();
         //then
@@ -33,7 +33,7 @@ public class EventResultTest {
     @Test
     void calculateTotalBenefit_EqualBenefit_Success() {
         //given
-        EventResult eventResult = EventResult.from(25, Order.of("레드와인-3개,바비큐립-5개,아이스크림-2개"));
+        EventResult eventResult = EventResult.from(25, Order.of("레드와인-3,바비큐립-5,아이스크림-2"));
         //when
         int totalBenefit = eventResult.calculateTotalBenefit();
         //then

@@ -18,7 +18,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualStar_Success() {
         //given
-        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-3개"));
+        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-3"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then
@@ -30,7 +30,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualTree_Success() {
         //given
-        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-5개"));
+        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-5"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then
@@ -42,7 +42,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualSanta_Success() {
         //given
-        EventResult eventResult = EventResult.from(15, Order.of("바비큐립-10개"));
+        EventResult eventResult = EventResult.from(15, Order.of("바비큐립-10"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then
@@ -53,7 +53,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualNone_Success() {
         //given
-        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-1개"));
+        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-1"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then

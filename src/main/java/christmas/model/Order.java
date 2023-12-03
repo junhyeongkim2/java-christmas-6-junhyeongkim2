@@ -17,11 +17,22 @@ public class Order {
     public static Order of(String input) {
         Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
         Matcher matcher = getMenuMatcher(input);
+        validateMenuForm(input);
         createMenusWithMatcher(menus, matcher);
         validateOnlyDrink(menus);
         validateIsOverTwentyMenu(menus);
         validateIsExistMenu(menus);
         return new Order(menus);
+    }
+
+    private static void validateMenuForm(String input) {
+        Pattern oneMenuPattern = Pattern.compile("^([a-zA-Z가-힣]+-\\d+)(,[a-zA-Z가-힣]+-\\d+)*$");
+        Pattern twoMoreMenuPattern = Pattern.compile("^([a-zA-Z가-힣]+)-(\\d+)$\n");
+        Matcher oneMatcher = oneMenuPattern.matcher(input);
+        Matcher twoMoreMatcher = twoMoreMenuPattern.matcher(input);
+        if (!oneMatcher.matches() && !twoMoreMatcher.matches()) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
     }
 
     private static void validateIsExistMenu(Map<Menu, Integer> menus) {
