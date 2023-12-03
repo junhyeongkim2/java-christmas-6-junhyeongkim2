@@ -1,5 +1,7 @@
 package christmas.view;
 
+import christmas.model.Menu;
+
 public class OutputView {
 
     public static void printStartMessage() {
@@ -16,5 +18,15 @@ public class OutputView {
 
     public static void printTotalOrderAmount(int totalOrderAmount) {
         System.out.println("<할인 전 총주문 금액>\n" + totalOrderAmount + "원");
+    }
+
+    public static void printIsGiveaway(Menu giveaway) {
+        System.out.println("<증정 메뉴>");
+        if (giveaway.equals(Menu.없음)) {
+            System.out.println(Menu.없음);
+        }
+        if (!giveaway.equals(Menu.없음)) {
+            System.out.println(giveaway);
+        }
     }
 }

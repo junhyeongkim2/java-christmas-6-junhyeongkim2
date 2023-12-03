@@ -12,6 +12,7 @@ public class EventPlannerController {
         OutputView.printBenefitStartMessage(visitDay);
         OutputView.printMenus(order.toString());
         OutputView.printTotalOrderAmount(order.calculateTotalOrderAmount());
+        OutputView.printIsGiveaway(order.isGiveaway());
 
 
     }

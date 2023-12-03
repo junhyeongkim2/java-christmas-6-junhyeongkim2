@@ -52,4 +52,10 @@ public class Order {
         return sb.toString();
     }
 
+    public Menu isGiveaway() {
+        if (calculateTotalOrderAmount() >= 120000) {
+            return Menu.샴페인;
+        }
+        return Menu.없음;
+    }
 }
