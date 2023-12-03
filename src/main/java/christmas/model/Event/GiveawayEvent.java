@@ -39,11 +39,17 @@ public class GiveawayEvent implements EventPolicy {
         }
         return 0;
     }
+
     @Override
     public boolean isWinningEvents() {
         if (discount() != 0) {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean isGiveaway() {
+        return true;
     }
 }

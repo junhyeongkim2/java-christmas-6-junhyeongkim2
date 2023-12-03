@@ -15,5 +15,5 @@ public interface EventPolicy {
 
     public boolean isWinningEvents();
 
-
+    boolean isGiveaway();
 }

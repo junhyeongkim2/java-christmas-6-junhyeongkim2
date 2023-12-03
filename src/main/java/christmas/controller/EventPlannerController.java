@@ -17,6 +17,7 @@ public class EventPlannerController {
         EventResult eventResult = EventResult.from(visitDay, order);
         OutputView.printWinningEvents(eventResult);
         OutputView.printTotalBenefitAmount(eventResult.calculateTotalBenefit());
+        OutputView.printExpectedPaymentAmount(eventResult.calcualteExpectedPaymentAmount());
 
 
     }

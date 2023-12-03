@@ -50,4 +50,9 @@ public class SpecialEvent implements EventPolicy {
         }
         return false;
     }
+
+    @Override
+    public boolean isGiveaway() {
+        return false;
+    }
 }
