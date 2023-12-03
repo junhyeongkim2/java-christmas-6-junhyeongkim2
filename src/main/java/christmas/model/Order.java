@@ -26,8 +26,8 @@ public class Order {
     }
 
     private static void validateMenuForm(String input) {
-        Pattern oneMenuPattern = Pattern.compile("^([a-zA-Z가-힣]+-\\d+)(,[a-zA-Z가-힣]+-\\d+)*$");
-        Pattern twoMoreMenuPattern = Pattern.compile("^([a-zA-Z가-힣]+)-(\\d+)$\n");
+        Pattern oneMenuPattern = Pattern.compile("^([a-zA-Z가-힣]+)-(\\d+)$\n");
+        Pattern twoMoreMenuPattern = Pattern.compile("^([a-zA-Z가-힣]+-\\d+)(,[a-zA-Z가-힣]+-\\d+)*$");
         Matcher oneMatcher = oneMenuPattern.matcher(input);
         Matcher twoMoreMatcher = twoMoreMenuPattern.matcher(input);
         if (!oneMatcher.matches() && !twoMoreMatcher.matches()) {
