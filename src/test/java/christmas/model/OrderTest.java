@@ -13,10 +13,7 @@ public class OrderTest {
     @Test
     void calculateTotalOrder_MainAndDrinkEqualAmount_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
-        menus.put(Menu.레드와인, 3);
-        menus.put(Menu.바비큐립, 5);
-        Order order = new Order(menus);
+        Order order = Order.of("레드와인-3,바비큐립-5");
         //when
         int totalOrderAmount = order.calculateTotalOrderAmount();
         //then
@@ -28,10 +25,7 @@ public class OrderTest {
     @Test
     void calculateTotalOrder_MainAndDessertEqualAmount_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
-        menus.put(Menu.아이스크림, 3);
-        menus.put(Menu.바비큐립, 5);
-        Order order = new Order(menus);
+        Order order = Order.of("아이스크림-3,바비큐립-5");
         //when
         int totalOrderAmount = order.calculateTotalOrderAmount();
         //then
