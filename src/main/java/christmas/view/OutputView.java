@@ -49,7 +49,7 @@ public class OutputView {
         System.out.println("<할인 후 예상 결제 금액>\n" + calcualteExpectedPaymentAmount + "원\n");
     }
 
-    public static void printBadge(Badge calculateBadge) {
-        System.out.println("<12월 이벤트 배지>\n" + calculateBadge.name());
+    public static void printBadge(Badge badge) {
+        System.out.println("<12월 이벤트 배지>\n" + badge.getName());
     }
 }

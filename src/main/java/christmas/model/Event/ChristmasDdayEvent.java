@@ -28,7 +28,7 @@ public class ChristmasDdayEvent implements EventPolicy {
 
     @Override
     public boolean isSatisfied(int day, Order order) {
-        if (1 <= day && day <= 25) {
+        if (1 <= day && day <= 25 && order.calculateTotalOrderAmount()>=10000) {
             return true;
         }
         return false;

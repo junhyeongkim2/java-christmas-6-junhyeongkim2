@@ -29,7 +29,7 @@ public class SpecialEvent implements EventPolicy {
 
     @Override
     public boolean isSatisfied(int day, Order order) {
-        if (specialDay.contains(day)) {
+        if (specialDay.contains(day)&& order.calculateTotalOrderAmount()>=10000) {
             return true;
         }
         return false;

@@ -19,8 +19,6 @@ public class EventPlannerController {
         OutputView.printTotalBenefitAmount(eventResult.calculateTotalBenefit());
         OutputView.printExpectedPaymentAmount(eventResult.calcualteExpectedPaymentAmount());
         OutputView.printBadge(eventResult.calculateBadge());
-
-
     }
 
 }
