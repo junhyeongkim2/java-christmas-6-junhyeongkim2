@@ -15,7 +15,7 @@ public class BadgeTest {
 
     @DisplayName("별 배지 생성 테스트")
     @Test
-    void createBadge_EqualStart_Success() {
+    void createBadge_EqualStar_Success() {
         //given
         Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
         menus.put(Menu.아이스크림, 3);
@@ -27,5 +27,19 @@ public class BadgeTest {
         assertThat(badge).isEqualTo(Badge.STAR);
     }
 
+
+    @DisplayName("트리 배지 생성 테스트")
+    @Test
+    void createBadge_EqualTree_Success() {
+        //given
+        Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
+        menus.put(Menu.아이스크림, 5);
+        EventResult eventResult = new EventResult(
+                List.of(new WeekdayEvent(11, menus)));
+        //when
+        Badge badge = Badge.from(eventResult.calculateTotalBenefit());
+        //then
+        assertThat(badge).isEqualTo(Badge.TREE);
+    }
 
 }
