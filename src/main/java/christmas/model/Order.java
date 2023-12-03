@@ -17,12 +17,16 @@ public class Order {
     public static Order of(String input) {
         Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
         Matcher matcher = getMenuMatcher(input);
+        validateOrder(input, menus, matcher);
+        return new Order(menus);
+    }
+
+    private static void validateOrder(String input, Map<Menu, Integer> menus, Matcher matcher) {
         validateMenuForm(input);
         createMenusWithMatcher(menus, matcher);
         validateOnlyDrink(menus);
         validateIsOverTwentyMenu(menus);
         validateIsExistMenu(menus);
-        return new Order(menus);
     }
 
     private static void validateMenuForm(String input) {
