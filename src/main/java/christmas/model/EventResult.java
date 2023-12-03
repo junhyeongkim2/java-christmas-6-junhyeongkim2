@@ -5,6 +5,7 @@ import christmas.model.Event.GiveawayEvent;
 import christmas.model.Event.SpecialEvent;
 import christmas.model.Event.WeekdayEvent;
 import christmas.model.Event.WeekendEvent;
+import christmas.view.OutputView;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class EventResult {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         events.stream().filter(eventPolicy -> eventPolicy.isWinningEvents())
-                .forEach(eventPolicy -> sb.append(eventPolicy.getEventName() + ": " + eventPolicy.discount() + "원\n"));
+                .forEach(eventPolicy -> sb.append(eventPolicy.getEventName() + ": " + OutputView.DECIMAL_FORMAT.format(eventPolicy.discount()) + "원\n"));
         return sb.toString();
     }
 

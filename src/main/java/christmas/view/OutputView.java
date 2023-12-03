@@ -3,8 +3,11 @@ package christmas.view;
 import christmas.model.Badge;
 import christmas.model.EventResult;
 import christmas.model.Menu;
+import java.text.DecimalFormat;
 
 public class OutputView {
+
+    public final static DecimalFormat DECIMAL_FORMAT = new DecimalFormat("###,###");
 
     public static void printStartMessage() {
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
@@ -19,7 +22,7 @@ public class OutputView {
     }
 
     public static void printTotalOrderAmount(int totalOrderAmount) {
-        System.out.println("<할인 전 총주문 금액>\n" + totalOrderAmount + "원\n");
+        System.out.println("<할인 전 총주문 금액>\n" + DECIMAL_FORMAT.format(totalOrderAmount) + "원\n");
     }
 
     public static void printIsGiveaway(Menu giveaway) {
@@ -42,11 +45,11 @@ public class OutputView {
     }
 
     public static void printTotalBenefitAmount(int calculateTotalBenefit) {
-        System.out.println("<총혜택 금액>\n" + calculateTotalBenefit + "원\n");
+        System.out.println("<총혜택 금액>\n" + DECIMAL_FORMAT.format(calculateTotalBenefit) + "원\n");
     }
 
     public static void printExpectedPaymentAmount(int calcualteExpectedPaymentAmount) {
-        System.out.println("<할인 후 예상 결제 금액>\n" + calcualteExpectedPaymentAmount + "원\n");
+        System.out.println("<할인 후 예상 결제 금액>\n" + DECIMAL_FORMAT.format(calcualteExpectedPaymentAmount) + "원\n");
     }
 
     public static void printBadge(Badge badge) {
