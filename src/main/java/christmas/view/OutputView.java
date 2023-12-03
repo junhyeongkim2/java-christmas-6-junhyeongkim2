@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.model.EventResult;
 import christmas.model.Menu;
 
 public class OutputView {
@@ -17,16 +18,25 @@ public class OutputView {
     }
 
     public static void printTotalOrderAmount(int totalOrderAmount) {
-        System.out.println("<할인 전 총주문 금액>\n" + totalOrderAmount + "원");
+        System.out.println("<할인 전 총주문 금액>\n" + totalOrderAmount + "원\n");
     }
 
     public static void printIsGiveaway(Menu giveaway) {
         System.out.println("<증정 메뉴>");
         if (giveaway.equals(Menu.없음)) {
-            System.out.println(Menu.없음);
+            System.out.println(Menu.없음 + "\n");
         }
         if (!giveaway.equals(Menu.없음)) {
-            System.out.println(giveaway);
+            System.out.println(giveaway + "\n");
         }
+    }
+
+    public static void printWinningEvents(EventResult eventResult) {
+        System.out.println("<혜택 내역>");
+        if (eventResult.toString().equals("")) {
+            System.out.println("없음\n");
+            return;
+        }
+        System.out.println(eventResult.toString());
     }
 }

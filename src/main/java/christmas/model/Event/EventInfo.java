@@ -21,4 +21,8 @@ public enum EventInfo {
     public int getDiscount() {
         return discount;
     }
+
+    public String getName() {
+        return name;
+    }
 }

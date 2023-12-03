@@ -2,6 +2,7 @@ package christmas.model.Event;
 
 import christmas.model.EventPolicy;
 import christmas.model.Menu;
+import christmas.model.Order;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,10 +12,11 @@ import java.util.stream.Collectors;
 
 public class WeekdayEvent implements EventPolicy {
     private final int day;
-    private final Map<Menu, Integer> menus;
-    public WeekdayEvent(int day, Map<Menu, Integer> menus) {
+    private final Order order;
+
+    public WeekdayEvent(int day, Order order) {
         this.day = day;
-        this.menus = menus;
+        this.order = order;
     }
 
     @Override
@@ -23,7 +25,12 @@ public class WeekdayEvent implements EventPolicy {
     }
 
     @Override
-    public boolean isSatisfied(int day, Map<Menu, Integer> menus) {
+    public String getEventName() {
+        return String.valueOf(EventInfo.SPECIAL_EVENT.getName());
+    }
+
+    @Override
+    public boolean isSatisfied(int day, Order order) {
         LocalDate date = LocalDate.of(2023, 12, day);
         if (!date.getDayOfWeek().equals(DayOfWeek.SATURDAY) && !date.getDayOfWeek().equals(DayOfWeek.FRIDAY)) {
             return true;
@@ -33,10 +40,17 @@ public class WeekdayEvent implements EventPolicy {
 
     @Override
     public int discount() {
-        if (isSatisfied(day, menus)) {
-            return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isDessert()).mapToInt(key->menus.get(key)).sum() * EventInfo.WEEKDAY_EVENT.getDiscount();
+        if (isSatisfied(day, order)) {
+            return order.calculateTotalDessertOrderAmount() * EventInfo.WEEKDAY_EVENT.getDiscount();
         }
         return 0;
     }
 
+    @Override
+    public boolean isWinningEvents() {
+        if (discount() != 0) {
+            return true;
+        }
+        return false;
+    }
 }

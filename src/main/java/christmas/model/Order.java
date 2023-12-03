@@ -58,4 +58,15 @@ public class Order {
         }
         return Menu.없음;
     }
+
+
+    public int calculateTotalDessertOrderAmount() {
+        return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isDessert())
+                .mapToInt(key -> menus.get(key)).sum();
+    }
+
+    public int calculateTotalMainOrderAmount() {
+        return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isMain())
+                .mapToInt(key -> menus.get(key)).sum();
+    }
 }

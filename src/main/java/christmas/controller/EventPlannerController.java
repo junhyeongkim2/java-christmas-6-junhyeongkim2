@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.EventResult;
 import christmas.model.Order;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -13,6 +14,7 @@ public class EventPlannerController {
         OutputView.printMenus(order.toString());
         OutputView.printTotalOrderAmount(order.calculateTotalOrderAmount());
         OutputView.printIsGiveaway(order.isGiveaway());
+        OutputView.printWinningEvents(EventResult.from(visitDay, order));
 
 
     }

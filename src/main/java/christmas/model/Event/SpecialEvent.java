@@ -2,16 +2,17 @@ package christmas.model.Event;
 
 import christmas.model.EventPolicy;
 import christmas.model.Menu;
+import christmas.model.Order;
 import java.util.List;
 import java.util.Map;
 
 public class SpecialEvent implements EventPolicy {
     private final int day;
-    private final Map<Menu, Integer> menus;
+    private final Order order;
 
-    public SpecialEvent(int day, Map<Menu, Integer> menus) {
+    public SpecialEvent(int day, Order order) {
         this.day = day;
-        this.menus = menus;
+        this.order = order;
     }
 
     private final List<Integer> specialDay = List.of(3, 10, 17, 24, 25, 31);
@@ -22,7 +23,12 @@ public class SpecialEvent implements EventPolicy {
     }
 
     @Override
-    public boolean isSatisfied(int day, Map<Menu, Integer> menus) {
+    public String getEventName() {
+        return String.valueOf(EventInfo.SPECIAL_EVENT.getName());
+    }
+
+    @Override
+    public boolean isSatisfied(int day, Order order) {
         if (specialDay.contains(day)) {
             return true;
         }
@@ -31,10 +37,17 @@ public class SpecialEvent implements EventPolicy {
 
     @Override
     public int discount() {
-        if (isSatisfied(day, menus)) {
+        if (isSatisfied(day, order)) {
             return EventInfo.SPECIAL_EVENT.getDiscount();
         }
         return 0;
     }
 
+    @Override
+    public boolean isWinningEvents() {
+        if (discount() != 0) {
+            return true;
+        }
+        return false;
+    }
 }

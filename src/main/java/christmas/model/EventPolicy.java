@@ -7,8 +7,13 @@ public interface EventPolicy {
 
     public EventInfo getEventInfo();
 
-    public boolean isSatisfied(int day, Map<Menu, Integer> menus);
+    public String getEventName();
+
+    public boolean isSatisfied(int day, Order order);
 
     public int discount();
+
+    public boolean isWinningEvents();
+
 
 }

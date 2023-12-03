@@ -19,11 +19,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualChristmasDdayDiscountAmount_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
-        menus.put(Menu.레드와인, 3);
-        menus.put(Menu.바비큐립, 5);
-        menus.put(Menu.아이스크림, 5);
-        EventPolicy christmasDdayEvent = new ChristmasDdayEvent(25,menus);
+        EventPolicy christmasDdayEvent = new ChristmasDdayEvent(25, Order.of("레드와인-3개,바비큐립-5개,아이스크림-5개"));
         //when
         int discountAmount = christmasDdayEvent.discount();
         //then
@@ -34,11 +30,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualWeekdayDiscountAmount_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
-        menus.put(Menu.레드와인, 3);
-        menus.put(Menu.바비큐립, 5);
-        menus.put(Menu.아이스크림, 5);
-        EventPolicy weekdayEvent = new WeekdayEvent(12,menus);
+        EventPolicy weekdayEvent = new WeekdayEvent(12, Order.of("레드와인-3개,바비큐립-5개,아이스크림-5개"));
         //when
         int discountAmount = weekdayEvent.discount();
         //then
@@ -49,12 +41,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualWeekendDiscountAmount_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
-        menus.put(Menu.레드와인, 3);
-        menus.put(Menu.바비큐립, 6);
-        menus.put(Menu.아이스크림, 5);
-        menus.put(Menu.해산물파스타, 5);
-        EventPolicy weekendEvent = new WeekendEvent(9,menus);
+        EventPolicy weekendEvent = new WeekendEvent(9, Order.of("레드와인-3개,바비큐립-6개,아이스크림-5개,해산물파스타-5개"));
         //when
         int discountAmount = weekendEvent.discount();
         //then
@@ -65,9 +52,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualSepecailDiscountAmount_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
-        menus.put(Menu.레드와인, 3);
-        EventPolicy specialEvent = new SpecialEvent(25,menus);
+        EventPolicy specialEvent = new SpecialEvent(25, Order.of("레드와인-3개"));
         //when
         int discountAmount = specialEvent.discount();
         //then
@@ -78,11 +63,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualGiveawayDiscountAmount_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<>(Menu.class);
-        menus.put(Menu.레드와인, 3);
-        menus.put(Menu.바비큐립, 5);
-        menus.put(Menu.해산물파스타, 3);
-        EventPolicy giveawayEvent = new GiveawayEvent(25,menus);
+        EventPolicy giveawayEvent = new GiveawayEvent(16, Order.of("레드와인-3개,바비큐립-5개,해산물파스타-3개"));
         //when
         int discountAmount = giveawayEvent.discount();
         //then

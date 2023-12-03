@@ -18,10 +18,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualStar_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
-        menus.put(Menu.아이스크림, 3);
-        EventResult eventResult = new EventResult(
-                List.of(new WeekdayEvent(11, menus)));
+        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-3개"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then
@@ -33,10 +30,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualTree_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
-        menus.put(Menu.아이스크림, 5);
-        EventResult eventResult = new EventResult(
-                List.of(new WeekdayEvent(11, menus)));
+        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-5개"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then
@@ -48,10 +42,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualSanta_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
-        menus.put(Menu.바비큐립, 10);
-        EventResult eventResult = new EventResult(
-                List.of(new WeekendEvent(15, menus)));
+        EventResult eventResult = EventResult.from(15, Order.of("바비큐립-5개"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then
@@ -62,9 +53,7 @@ public class BadgeTest {
     @Test
     void createBadge_EqualNone_Success() {
         //given
-        Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
-        EventResult eventResult = new EventResult(
-                List.of(new WeekendEvent(15, menus)));
+        EventResult eventResult = EventResult.from(11, Order.of("아이스크림-1개"));
         //when
         Badge badge = Badge.from(eventResult.calculateTotalBenefit());
         //then
