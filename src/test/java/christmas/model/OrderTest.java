@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class OrderTest {
 
@@ -17,7 +18,7 @@ public class OrderTest {
         //when
         int totalOrderAmount = order.calculateTotalOrderAmount();
         //then
-        assertThat(totalOrderAmount).isEqualTo(Menu.레드와인.getPrice()*3 + Menu.바비큐립.getPrice()*5);
+        assertThat(totalOrderAmount).isEqualTo(Menu.레드와인.getPrice() * 3 + Menu.바비큐립.getPrice() * 5);
     }
 
 
@@ -29,9 +30,15 @@ public class OrderTest {
         //when
         int totalOrderAmount = order.calculateTotalOrderAmount();
         //then
-        assertThat(totalOrderAmount).isEqualTo(Menu.아이스크림.getPrice()*3 + Menu.바비큐립.getPrice()*5);
+        assertThat(totalOrderAmount).isEqualTo(Menu.아이스크림.getPrice() * 3 + Menu.바비큐립.getPrice() * 5);
     }
 
+    @DisplayName("음료만 주문 시 에러 발생 테스트")
+    @Test
+    void validateIsOnlyDrink_IfOnlyDrink_ExceptionThrow() {
+        //given&&when&&then
+        assertThatThrownBy(() -> Order.of("샴페인-5")).isInstanceOf(IllegalArgumentException.class);
+    }
 
 
 }

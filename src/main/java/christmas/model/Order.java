@@ -17,7 +17,14 @@ public class Order {
         Map<Menu, Integer> menus = new EnumMap<Menu, Integer>(Menu.class);
         Matcher matcher = getMenuMatcher(input);
         createMenusWithMatcher(menus, matcher);
+        validateOnlyDrink(menus);
         return new Order(menus);
+    }
+
+    private static void validateOnlyDrink(Map<Menu, Integer> menus) {
+        if (menus.keySet().stream().allMatch(Menu::isDrink)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void createMenusWithMatcher(Map<Menu, Integer> menus, Matcher matcher) {

@@ -52,7 +52,7 @@ public class EventPolicyTest {
     @Test
     void discount_EqualSepecailDiscountAmount_Success() {
         //given
-        EventPolicy specialEvent = new SpecialEvent(25, Order.of("레드와인-3개"));
+        EventPolicy specialEvent = new SpecialEvent(25, Order.of("바비큐립-6개,아이스크림-5개"));
         //when
         int discountAmount = specialEvent.discount();
         //then

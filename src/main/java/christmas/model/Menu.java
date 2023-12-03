@@ -40,6 +40,14 @@ public enum Menu {
         return false;
     }
 
+    public Boolean isDrink() {
+        if (category.equals("음료")) {
+            return true;
+        }
+        return false;
+    }
+
+
     public int getPrice() {
         return price;
     }
