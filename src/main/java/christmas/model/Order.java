@@ -64,6 +64,13 @@ public class Order {
 
     }
 
+    private static Matcher getMenuMatcher(String input) {
+        Pattern pattern = Pattern.compile("(\\p{IsHangul}+)-(\\d+)");
+        Matcher matcher = pattern.matcher(input);
+        return matcher;
+    }
+
+
     private static void createMenusWithMatcher(Map<Menu, Integer> menus, Matcher matcher) {
         while (matcher.find()) {
             String menuName = matcher.group(1);
@@ -73,15 +80,26 @@ public class Order {
         }
     }
 
-    private static Matcher getMenuMatcher(String input) {
-        Pattern pattern = Pattern.compile("(\\p{IsHangul}+)-(\\d+)");
-        Matcher matcher = pattern.matcher(input);
-        return matcher;
-    }
-
     public int calculateTotalOrderAmount() {
         return menus.entrySet().stream().mapToInt(entry -> entry.getKey().getPrice() * entry.getValue())
                 .sum();
+    }
+
+    public int calculateTotalDessertOrderAmount() {
+        return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isDessert())
+                .mapToInt(key -> menus.get(key)).sum();
+    }
+
+    public int calculateTotalMainOrderAmount() {
+        return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isMain())
+                .mapToInt(key -> menus.get(key)).sum();
+    }
+
+    public Menu isGiveaway() {
+        if (calculateTotalOrderAmount() >= 120000) {
+            return Menu.샴페인;
+        }
+        return Menu.없음;
     }
 
     @Override
@@ -95,23 +113,5 @@ public class Order {
             sb.append(menuName).append(" ").append(quantity).append("개\n");
         }
         return sb.toString();
-    }
-
-    public Menu isGiveaway() {
-        if (calculateTotalOrderAmount() >= 120000) {
-            return Menu.샴페인;
-        }
-        return Menu.없음;
-    }
-
-
-    public int calculateTotalDessertOrderAmount() {
-        return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isDessert())
-                .mapToInt(key -> menus.get(key)).sum();
-    }
-
-    public int calculateTotalMainOrderAmount() {
-        return menus.keySet().stream().filter(key -> Menu.valueOf(String.valueOf(key)).isMain())
-                .mapToInt(key -> menus.get(key)).sum();
     }
 }

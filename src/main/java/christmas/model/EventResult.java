@@ -31,20 +31,21 @@ public class EventResult {
         return events.stream().mapToInt(EventPolicy::discount).sum();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        events.stream().filter(eventPolicy -> eventPolicy.isWinningEvents())
-                .forEach(eventPolicy -> sb.append(eventPolicy.getEventName() + ": " + OutputView.DECIMAL_FORMAT.format(eventPolicy.discount()) + "원\n"));
-        return sb.toString();
-    }
-
-
     public int calcualteExpectedPaymentAmount() {
         return events.stream().filter(event -> event.isGiveaway() == false).mapToInt(event -> event.discount()).sum();
     }
 
     public Badge calculateBadge() {
         return Badge.from(calculateTotalBenefit());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        events.stream().filter(eventPolicy -> eventPolicy.isWinningEvents())
+                .forEach(eventPolicy -> sb.append(
+                        eventPolicy.getEventName() + ": " + OutputView.DECIMAL_FORMAT.format(eventPolicy.discount())
+                                + "원\n"));
+        return sb.toString();
     }
 }
