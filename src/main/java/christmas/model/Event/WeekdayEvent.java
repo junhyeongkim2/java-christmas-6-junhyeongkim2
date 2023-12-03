@@ -25,7 +25,7 @@ public class WeekdayEvent implements EventPolicy {
     @Override
     public boolean isSatisfied(int day, Map<Menu, Integer> menus) {
         LocalDate date = LocalDate.of(2023, 12, day);
-        if (!date.getDayOfWeek().equals(DayOfWeek.SATURDAY) && !date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+        if (!date.getDayOfWeek().equals(DayOfWeek.SATURDAY) && !date.getDayOfWeek().equals(DayOfWeek.FRIDAY)) {
             return true;
         }
         return false;
